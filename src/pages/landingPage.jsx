@@ -44,7 +44,7 @@ export default function LandingPage() {
           display: 'flex',
           flexDirection: { xs: 'column', md: 'row' },
           justifyContent: 'space-between',
-          alignItems: 'flex-start',
+          alignItems: { xs: 'center', md: 'flex-start' },
           width: '100%',
           maxWidth: 1200,
           gap: 4,
