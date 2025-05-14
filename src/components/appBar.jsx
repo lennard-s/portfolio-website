@@ -12,6 +12,10 @@ export default function AppBarComponent() {
     setValue(newValue); // Update the selected tab
   };
 
+  const handleLogoClick = () => {
+    setValue(false); // Reset the selected tab
+  };
+
   return (
     <AppBar position="sticky">
       <Toolbar>
@@ -25,6 +29,7 @@ export default function AppBarComponent() {
           }}
           component={Link}
           to="/"
+          onClick={handleLogoClick} // Reset tabs when clicked
         >
           Lennard's Portfolio
         </Typography>
@@ -34,7 +39,6 @@ export default function AppBarComponent() {
           variant={isXs ? 'scrollable' : 'standard'}
           scrollButtons={isXs ? 'auto' : false}
           textColor="inherit"
-        //   indicatorColor="secondary"
         >
           <Tab label="Dev" value="/dev" component={Link} to="/dev" />
           <Tab label="Design" value="/design" component={Link} to="/design" />
