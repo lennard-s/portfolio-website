@@ -1,5 +1,8 @@
 import React from 'react';
-import { Box, Typography, Grid, Avatar } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+import SchoolIcon from '@mui/icons-material/School';
+import BuildIcon from '@mui/icons-material/Build';
+import CodeIcon from '@mui/icons-material/Code';
 
 export default function LandingPage() {
   return (
@@ -7,39 +10,97 @@ export default function LandingPage() {
       sx={{
         minHeight: '100vh',
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center',
         backgroundColor: '#f5f5f5',
         padding: 4,
       }}
     >
-      <Grid container spacing={4} alignItems="center">
-        {/* Portrait Section */}
-        <Grid item xs={12} md={4} sx={{ textAlign: 'center' }}>
-          <Avatar
-            alt="Your Name"
-            src="/path-to-your-portrait.jpg" // Replace with your image path
-            sx={{
-              width: 200,
-              height: 200,
-              margin: '0 auto',
-              boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)',
-            }}
-          />
-        </Grid>
+      {/* Portrait Section */}
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginBottom: 4,
+        }}
+      >
+        <img
+          alt="Portrait of Lennard Szyperski"
+          src="/portrait.jpg"
+          style={{
+            width: 200,
+            height: 200,
+            borderRadius: '50%',
+            boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)',
+            objectFit: 'cover',
+          }}
+        />
+      </Box>
 
-        {/* Introduction Section */}
-        <Grid item xs={12} md={8}>
-          <Typography variant="h3" sx={{ fontWeight: 'bold', marginBottom: 2 }}>
-            Hello, I'm Lennard Szyperski
+      {/* Introduction Section */}
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          width: '100%',
+          maxWidth: 1200,
+          gap: 4,
+        }}
+      >
+        {/* Column 1: Education */}
+        <Box sx={{ textAlign: 'center', flex: 1 }}>
+          <SchoolIcon sx={{ fontSize: 50, color: '#1976d2', marginBottom: 2 }} />
+          <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: 1 }}>
+            Education
           </Typography>
-          <Typography variant="body1" sx={{ fontSize: '1.2rem', color: '#555' }}>
-            I’m a [Your Profession/Role] with a passion for [Your Interests or Skills]. 
-            Welcome to my portfolio site where I showcase my work, skills, and experiences. 
-            Feel free to explore and connect with me!
+          <Typography variant="body1" sx={{ color: '#555' }}>
+            Rochester Institute of Technology
           </Typography>
-        </Grid>
-      </Grid>
+          <Typography variant="body2" sx={{ color: '#777' }}>
+            BS in Human Centered Computing
+          </Typography>
+          <Typography variant="body2" sx={{ color: '#777' }}>
+            3.92 GPA, Summa Cum Laude
+          </Typography>
+        </Box>
+
+        {/* Column 2: Skills */}
+        <Box sx={{ textAlign: 'center', flex: 1 }}>
+          <BuildIcon sx={{ fontSize: 50, color: '#1976d2', marginBottom: 2 }} />
+          <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: 1 }}>
+            Skills
+          </Typography>
+          <Typography variant="body1" sx={{ color: '#555' }}>
+            Technical Project Management
+          </Typography>
+          <Typography variant="body1" sx={{ color: '#555' }}>
+            Full-Stack Development
+          </Typography>
+          <Typography variant="body1" sx={{ color: '#555' }}>
+            UX/UI Design
+          </Typography>
+        </Box>
+
+        {/* Column 3: Toolkit */}
+        <Box sx={{ textAlign: 'center', flex: 1 }}>
+          <CodeIcon sx={{ fontSize: 50, color: '#1976d2', marginBottom: 2 }} />
+          <Typography variant="h6" sx={{ fontWeight: 'bold', marginBottom: 1 }}>
+            Toolkit
+          </Typography>
+          <Typography variant="body1" sx={{ color: '#555' }}>
+            React, JavaScript, MySQL
+          </Typography>
+          <Typography variant="body1" sx={{ color: '#555' }}>
+            Node.js, Figma, Git
+          </Typography>
+          <Typography variant="body1" sx={{ color: '#555' }}>
+            Material-UI, Java
+          </Typography>
+        </Box>
+      </Box>
     </Box>
   );
 }
