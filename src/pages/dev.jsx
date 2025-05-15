@@ -63,7 +63,7 @@ export default function DevPage() {
               flexShrink: 0,
               scrollSnapAlign: 'center',
               backgroundColor: '#fff',
-              boxShadow: 3,
+              boxShadow: 1,
               borderRadius: 2,
             }}
           >
