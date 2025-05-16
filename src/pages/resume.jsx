@@ -15,7 +15,7 @@ const Resume = () => {
     >
       {/* Header */}
       <Typography
-        variant="h3"
+        variant="h4"
         sx={{
           fontWeight: 'bold',
           color: '#333',

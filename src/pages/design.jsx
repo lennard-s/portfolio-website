@@ -1,69 +1,11 @@
 import React, { useState } from 'react';
-import { Box, Tabs, Tab, useMediaQuery, useTheme, Typography, ToggleButton, ToggleButtonGroup, Paper } from '@mui/material';
+import { Box, Tabs, Tab, useMediaQuery, useTheme, Typography, Paper } from '@mui/material';
+import PrototypeCard from '../components/prototypeCard';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
-// Reusable component for each prototype section
-function PrototypeSection({ title, description, figmaEmbedCode, youtubeEmbedCode }) {
-    const [mediaTab, setMediaTab] = useState(0);
-
-    const handleMediaTabChange = (event, newValue) => {
-        setMediaTab(newValue);
-    };
-
-    const hasBothMedia = figmaEmbedCode && youtubeEmbedCode;
-
-    return (
-        <Paper sx={{ mb: 4, p: 2 }}>
-            <Typography variant="h5" align="center" sx={{ mb: 2, color: '#333' }}>
-                {title}
-            </Typography>
-            <Typography variant="body1" align="left" sx={{ mb: 4, contentType: '#555' }}>
-                {description}
-            </Typography>
-
-            <Box sx={{ position: 'relative', width: '100%', paddingBottom: '56.25%', mb: 1 }}>
-                {(!hasBothMedia || mediaTab === 0) && figmaEmbedCode && (
-                    <iframe
-                        src={figmaEmbedCode}
-                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                        allowFullScreen
-                    />
-                )}
-                {hasBothMedia && mediaTab === 1 && youtubeEmbedCode && (
-                    <iframe
-                        src={youtubeEmbedCode}
-                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                        allowFullScreen
-                    />
-                )}
-                {!hasBothMedia && youtubeEmbedCode && !figmaEmbedCode && (
-                    <iframe
-                        src={youtubeEmbedCode}
-                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                        allowFullScreen
-                    />
-                )}
-            </Box>
-            {hasBothMedia && (
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <ToggleButtonGroup
-                        value={mediaTab}
-                        exclusive
-                        onChange={handleMediaTabChange}
-                    >
-                        <ToggleButton value={0} sx={{ textTransform: 'none' }}>
-                            Figma Prototype
-                        </ToggleButton>
-                        <ToggleButton value={1} sx={{ textTransform: 'none' }}>
-                            YouTube Video
-                        </ToggleButton>
-                    </ToggleButtonGroup>
-                </Box>
-            )}
-        </Paper>
-    );
-}
-
-// Sample prototype data (replace with your own embed URLs)
+// Sample prototype data
 const prototypes = [
     {
         title: 'Prototype 1',
@@ -84,101 +26,139 @@ const prototypes = [
     },
 ];
 
+const settings = {
+    dots: true,
+    adaptiveHeight: true,
+    infinite: true,
+    centerPadding: "60px",
+    centered: true,
+    speed: 500,
+    slidesToShow: 1, // Number of cards visible at once
+    slidesToScroll: 1,
+    swipeToSlide: true,
+    responsive: [
+        {
+            breakpoint: 768, // For smaller screens
+            settings: {
+                slidesToShow: 1,
+            },
+        },
+    ],
+};
+
 export default function DesignPage() {
     const [selectedTab, setSelectedTab] = useState(0);
     const theme = useTheme();
-    const isMobile = useMediaQuery(theme.breakpoints.down('md')); // Breakpoint for mobile screens
+    const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
     const handleTabChange = (event, newValue) => {
-        setSelectedTab(newValue);
+        if (newValue !== null) setSelectedTab(newValue);
     };
 
     return (
         <Box
             sx={{
                 minHeight: '100vh',
-                display: 'flex',
-                flexDirection: { xs: 'column', md: 'row' }, // Column on mobile, row on desktop
-                alignItems: 'flex-start',
                 backgroundColor: '#f5f5f5',
-                padding: 4,
-                gap: 4,
-                maxWidth: '1200px', // Limit the width of the parent container
-                margin: '0 auto', // Center the container
+                padding: { xs: 2, md: 4 },
+                display: 'flex',
+                justifyContent: 'center',
+                overflow: 'hidden'
             }}
         >
-            {/* Tabs Section */}
             <Box
                 sx={{
-                    position: { xs: 'fixed', md: 'sticky' }, // Fixed at the bottom for mobile, sticky for desktop
-                    bottom: { xs: 0, md: 'unset' }, // Align to the bottom for mobile
-                    top: { xs: 'unset', md: 200 }, // Stick below the top for desktop
-                    alignSelf: {xs: 'center', md: 'flex-start'},
-                    zIndex: 1,
-                    width: { xs: '90%', md: '200px' }, // Full width on mobile, fixed width on desktop
-                    mb: { xs: 2, md: 0 }, // Remove margin bottom for mobile
-                    flexShrink: 0,
+                    display: 'flex',
+                    flexDirection: { xs: 'column', md: 'row' },
+                    width: '100%',
+                    maxWidth: '1200px',
+                    gap: { xs: 0, md: 4 },
+                    pb: { xs: 4, md: 4 },
+                    position: 'relative',
                 }}
             >
-                <Tabs
-                    value={selectedTab}
-                    onChange={handleTabChange}
-                    textColor="primary"
-                    indicatorColor="primary"
-                    orientation={isMobile ? 'horizontal' : 'vertical'} // Horizontal on mobile, vertical on desktop
-                    sx={{
-                        borderBottom: isMobile ? 1 : 0, // Border for horizontal tabs on mobile
-                        borderRight: isMobile ? 0 : 1, // Border for vertical tabs on desktop
-                        borderColor: 'divider',
-                        backgroundColor: '#fff', // Background for tabs
-                        borderRadius: 1,
-                        '.MuiTab-root': {
-                            textTransform: 'none', // Prevent uppercase
-                            fontWeight: 'medium',
-                            padding: isMobile ? '8px 16px' : '12px 24px', // Adjust padding
-                        },
-                    }}
-                    centered={isMobile} // Center tabs on mobile
-                >
-                    <Tab label="Prototyping" />
-                    <Tab label="Graphic" />
-                    <Tab label="Illustration" />
-                </Tabs>
-            </Box>
+                {/* Tabs Section */}
+                <Box sx={{ width: { xs: '100%', md: '200px' }, mx: { xs: 'auto', md: 'unset' } }}>
+                    <Paper
+                        sx={{
+                            position: { xs: 'fixed', md: 'sticky' },
+                            top: { xs: 'unset', md: 180 }, // Fixed at top on mobile, sticky on desktop
+                            bottom: { xs: 0, md: 'unset' },
+                            width: 'fit-content',
+                            zIndex: 3,
+                            mb: { xs: 2, md: 0 },
+                            alignSelf: { xs: 'center', md: 'flex-start' },
+                            backgroundColor: '#fff',
+                            borderRadius: 1,
+                        }}
+                    >
+                        <Tabs
+                            value={selectedTab}
+                            onChange={handleTabChange}
+                            textColor="primary"
+                            indicatorColor="primary"
+                            orientation={isMobile ? 'horizontal' : 'vertical'}
+                            variant="scrollable"
+                            sx={{
+                                borderBottom: isMobile ? 1 : 0,
+                                borderRight: isMobile ? 0 : 1,
+                                borderColor: 'divider',
+                                '.MuiTab-root': {
+                                    textTransform: 'none',
+                                    fontWeight: 'medium',
+                                    padding: isMobile ? '8px 16px' : '12px 24px',
+                                },
+                            }}
+                            centered={isMobile}
+                        >
+                            <Tab label="Prototyping" />
+                            <Tab label="Graphic" />
+                            <Tab label="Illustration" />
+                        </Tabs>
+                    </Paper>
+                </Box>
 
-            {/* Main Content Section */}
-            <Box sx={{ flex: 1, width: { xs: '100%', md: 'calc(100% - 240px)' } }}>
-                <Typography
-                    variant="h4"
+                {/* Main Content Section */}
+                <Box
                     sx={{
-                        fontWeight: 'bold',
-                        color: '#333',
-                        marginBottom: 4,
-                        textAlign: 'center',
+                        flex: 1,
+                        maxWidth: { xs: '100%', md: '800px' },
+                        maxHeight: '20%',
+                        mx: { xs: 0, md: 'auto' },
+                        pt: { xs: 2, md: 0 }, // Padding top on mobile to account for fixed tabs
                     }}
                 >
-                    Design Work
-                </Typography>
-                <Box sx={{ maxWidth: '800px', mx: 'auto' }}>
-                    {selectedTab === 0 && (
-                        <>
-                            {prototypes.map((proto, index) => (
-                                <React.Fragment key={index}>
-                                    <PrototypeSection {...proto} />
-                                </React.Fragment>
-                            ))}
-                        </>
-                    )}
-                    {selectedTab === 1 && (
-                        <Typography variant="body1" sx={{ color: '#555', textAlign: 'center' }}>
-                            Graphic content goes here. Showcase your branding, posters, or other graphic design work.
-                        </Typography>
-                    )}
-                    {selectedTab === 2 && (
-                        <Typography variant="body1" sx={{ color: '#555', textAlign: 'center' }}>
-                            Illustration content goes here. Showcase your digital or traditional illustrations.
-                        </Typography>
-                    )}
+                    <Typography
+                        variant="h4"
+                        sx={{
+                            fontWeight: 'bold',
+                            color: '#333',
+                            textAlign: 'center',
+                        }}
+                    >
+                        Design Work
+                    </Typography>
+                    <Box
+                        sx={{ width: '90%', mx: 'auto' }}
+                    >
+                        {selectedTab === 0 && (
+                            <Slider {...settings}>
+                                {prototypes.map((proto, index) => (
+                                    <PrototypeCard key={index} {...proto} />
+                                ))}
+                            </Slider>
+                        )}
+                        {selectedTab === 1 && (
+                            <Typography variant="body1" sx={{ color: '#555', textAlign: 'center' }}>
+                                Graphic content goes here. Showcase your branding, posters, or other graphic design work.
+                            </Typography>
+                        )}
+                        {selectedTab === 2 && (
+                            <Typography variant="body1" sx={{ color: '#555', textAlign: 'center' }}>
+                                Illustration content goes here. Showcase your digital or traditional illustrations.
+                            </Typography>
+                        )}
+                    </Box>
                 </Box>
             </Box>
         </Box>
