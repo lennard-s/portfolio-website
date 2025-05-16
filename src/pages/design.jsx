@@ -56,39 +56,27 @@ export default function DesignPage() {
     };
 
     return (
-        <Box
-            sx={{
-                minHeight: '100vh',
-                backgroundColor: '#f5f5f5',
-                padding: { xs: 2, md: 4 },
-                display: 'flex',
-                justifyContent: 'center',
-                overflow: 'hidden'
-            }}
-        >
+        <>
+            {/* Page Container */}
             <Box
                 sx={{
                     display: 'flex',
-                    flexDirection: { xs: 'column', md: 'row' },
-                    width: '100%',
-                    maxWidth: '1200px',
-                    gap: { xs: 0, md: 4 },
-                    pb: { xs: 4, md: 4 },
-                    position: 'relative',
+                    flexDirection: { xs: 'column', md: 'row' }, 
+                    justifyContent: 'center',
+                    p: 2, 
+                    // border: '2px solid #FFA500', // Orange border for the entire page
                 }}
             >
                 {/* Tabs Section */}
-                <Box sx={{ width: { xs: '100%', md: '200px' }, mx: { xs: 'auto', md: 'unset' } }}>
+                <Box sx={{ width: { xs: '90%', md: 'fit-content' }}}>
                     <Paper
                         sx={{
                             position: { xs: 'fixed', md: 'sticky' },
                             top: { xs: 'unset', md: 180 }, // Fixed at top on mobile, sticky on desktop
                             bottom: { xs: 0, md: 'unset' },
                             width: 'fit-content',
-                            zIndex: 3,
                             mb: { xs: 2, md: 0 },
                             alignSelf: { xs: 'center', md: 'flex-start' },
-                            backgroundColor: '#fff',
                             borderRadius: 1,
                         }}
                     >
@@ -121,11 +109,11 @@ export default function DesignPage() {
                 {/* Main Content Section */}
                 <Box
                     sx={{
-                        flex: 1,
-                        maxWidth: { xs: '100%', md: '800px' },
-                        maxHeight: '20%',
-                        mx: { xs: 0, md: 'auto' },
+                        maxWidth: { xs: '90%', md: '60%' },
+                        height: '80vh',
                         pt: { xs: 2, md: 0 }, // Padding top on mobile to account for fixed tabs
+                        mx: 'auto',
+                        // border: '2px solid #0000FF', // Blue border for the main content
                     }}
                 >
                     <Typography
@@ -134,13 +122,11 @@ export default function DesignPage() {
                             fontWeight: 'bold',
                             color: '#333',
                             textAlign: 'center',
+                            mb: 1,
                         }}
                     >
                         Design Work
                     </Typography>
-                    <Box
-                        sx={{ width: '90%', mx: 'auto' }}
-                    >
                         {selectedTab === 0 && (
                             <Slider {...settings}>
                                 {prototypes.map((proto, index) => (
@@ -158,9 +144,8 @@ export default function DesignPage() {
                                 Illustration content goes here. Showcase your digital or traditional illustrations.
                             </Typography>
                         )}
-                    </Box>
                 </Box>
             </Box>
-        </Box>
+        </>
     );
 }

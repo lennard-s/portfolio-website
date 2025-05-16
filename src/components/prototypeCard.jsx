@@ -11,8 +11,11 @@ export default function PrototypeCard({ title, description, figmaEmbedCode, yout
     const hasBothMedia = figmaEmbedCode && youtubeEmbedCode;
 
     return (
-        <Paper sx={{ p: 2, m:2, maxHeight: '60%' }}>
-            <Typography variant="h5" align="center" sx={{ mb: 2, color: '#333' }}>
+        <Paper sx={{
+            p: 2,
+            m: 1,
+        }}>
+            <Typography variant="h5" align="left" sx={{ mb: 2, color: '#333' }}>
                 {title}
             </Typography>
             <Typography variant="body1" align="left" sx={{ mb: 4, color: '#555' }}>
@@ -45,7 +48,8 @@ export default function PrototypeCard({ title, description, figmaEmbedCode, yout
                     />
                 )}
             </Box>
-            {hasBothMedia && (
+            {/* Option to hide the toggles if both media aren't present */}
+            {/* {hasBothMedia && ( */}
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <ToggleButtonGroup
                         value={mediaTab}
@@ -61,7 +65,7 @@ export default function PrototypeCard({ title, description, figmaEmbedCode, yout
                         </ToggleButton>
                     </ToggleButtonGroup>
                 </Box>
-            )}
+            {/* )} */}
         </Paper>
     );
 }
