@@ -4,6 +4,10 @@ import { Menu } from '@mui/icons-material';
 import { Link, useLocation } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 
+const appBarGradient = 'linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))';
+const mainTextGradient = 'linear-gradient(var(--angle), rgb(96.9% 71.8% 63.9%), rgb(92.2% 72.9% 72.5%), rgb(94.9% 84.7% 84.7%), rgb(94.1% 91.8% 83.9%))';
+const tabsGradient = 'linear-gradient(var(--angle), rgb(96.9% 71.8% 63.9%), rgb(92.2% 72.9% 72.5%), rgb(94.9% 84.7% 84.7%), rgb(94.1% 91.8% 83.9%))';
+
 export default function AppBarComponent() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const theme = useTheme();
@@ -28,7 +32,7 @@ export default function AppBarComponent() {
       position="sticky"
       sx={{
         '--angle': '45deg',
-        background: 'linear-gradient(var(--angle), rgb(96.9% 71.8% 63.9%), rgb(92.2% 72.9% 72.5%), rgb(94.9% 84.7% 84.7%), rgb(94.1% 91.8% 83.9%))',
+        background: appBarGradient,
       }}
       elevation={1}
     >
@@ -43,7 +47,7 @@ export default function AppBarComponent() {
             width: 'fit-content',
             cursor: 'pointer',
             textDecoration: 'none',
-            background: 'linear-gradient(var(--angle), rgb(0% 0% 0%), rgb(4.31% 14.1% 29%), rgb(16.9% 28.2% 46.7%), rgb(36.1% 46.3% 66.3%))',
+            background: mainTextGradient,
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
             whiteSpace: 'nowrap',
@@ -92,9 +96,10 @@ export default function AppBarComponent() {
             onChange={handleChange} // Handle tab change
             variant="standard"
             textColor="inherit"
+            indicatorColor="transparent"
             sx={{
               '& .MuiTab-root': {
-                background: 'linear-gradient(var(--angle), rgb(0% 0% 0%), rgb(4.31% 14.1% 29%), rgb(16.9% 28.2% 46.7%), rgb(36.1% 46.3% 66.3%), rgb(62.7% 74.9% 87.8%))',
+                background: tabsGradient,
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
               },

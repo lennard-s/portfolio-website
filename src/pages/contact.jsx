@@ -13,7 +13,6 @@ export default function ContactPage() {
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: '#f5f5f5',
         padding: 4,
       }}
     >

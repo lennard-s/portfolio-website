@@ -28,7 +28,6 @@ export default function DevPage() {
         flexDirection: 'column',
         justifyContent: 'flex-start',
         alignItems: 'center',
-        backgroundColor: '#f5f5f5',
         padding: 4,
         overflow: 'hidden', // Prevent horizontal scrolling on the entire page
       }}
