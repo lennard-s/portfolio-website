@@ -5,24 +5,26 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-// Sample prototype data
+<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="" allowfullscreen></iframe>
+// prototype data
 const prototypes = [
     {
-        title: 'Prototype 1',
-        description: 'A sleek mobile app interface designed for seamless user interaction.',
-        figmaEmbedCode: 'https://www.figma.com/embed?embed_host=share&url=your_figma_url_here',
+        title: 'Tamagotchi BRONT',
+        description: 'A Tamagotchi-like experience, where the user can interact with a virtual pet.',
+        figmaEmbedCode: 'https://embed.figma.com/proto/g0v2A1yKpF2Sgtct9BbTzx/Tamagotchi-BRONT----?page-id=0%3A1&node-id=142-316&starting-point-node-id=34%3A10&embed-host=share',
+        youtubeEmbedCode: 'https://www.youtube.com/embed/IPbW7ZShpjg?si=XDgXpWKmrPZ_tOZl',
+    },
+    {
+        title: 'Campus Maps Redesign',
+        description: 'A complete overhaul of the RIT campus map experience.',
+        figmaEmbedCode: 'https://embed.figma.com/proto/UAOzmFJZhKM65EPHXo7UjW/Campus-Map-Redesign?page-id=0%3A1&node-id=1-2186&starting-point-node-id=1%3A2186&embed-host=share',
         youtubeEmbedCode: 'https://www.youtube.com/embed/your_video_id_here',
     },
     {
-        title: 'Prototype 2',
-        description: 'An innovative web dashboard with real-time data visualization.',
-        figmaEmbedCode: 'https://www.figma.com/embed?embed_host=share&url=your_figma_url_here',
+        title: 'North Star Goal Tracker',
+        description: 'An AI powered goal setting and tracking app.',
+        figmaEmbedCode: 'https://embed.figma.com/proto/tseog53dc3Bu6f151el3EJ/North-Star-Prototype?page-id=0%3A1&node-id=1-809&starting-point-node-id=1%3A809&embed-host=share',
         youtubeEmbedCode: 'https://www.youtube.com/embed/your_video_id_here',
-    },
-    {
-        title: 'Prototype 3',
-        description: 'A minimalist e-commerce checkout flow optimized for conversions.',
-        figmaEmbedCode: 'https://www.figma.com/embed?embed_host=share&url=your_figma_url_here',
     },
 ];
 
@@ -30,7 +32,8 @@ const settings = {
     dots: true,
     adaptiveHeight: true,
     infinite: true,
-    centerPadding: "60px",
+    centerMode: true,
+    centerPadding: "5px",
     centered: true,
     speed: 500,
     slidesToShow: 1, // Number of cards visible at once
@@ -63,12 +66,12 @@ export default function DesignPage() {
                     display: 'flex',
                     flexDirection: { xs: 'column', md: 'row' }, 
                     justifyContent: 'center',
-                    p: 2, 
+                    p: 2,
                     // border: '2px solid #FFA500', // Orange border for the entire page
                 }}
             >
                 {/* Tabs Section */}
-                <Box sx={{ width: { xs: '90%', md: 'fit-content' }}}>
+                <Box sx={{ width: { xs: '90%', md: 'fit-content'}, mr: 10}}>
                     <Paper
                         sx={{
                             position: { xs: 'fixed', md: 'sticky' },
@@ -112,7 +115,10 @@ export default function DesignPage() {
                         maxWidth: { xs: '90%', md: '60%' },
                         height: '80vh',
                         pt: { xs: 2, md: 0 }, // Padding top on mobile to account for fixed tabs
-                        mx: 'auto',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'flex-start',
+                        mx: { xs: 'auto', md: 'unset'}
                         // border: '2px solid #0000FF', // Blue border for the main content
                     }}
                 >

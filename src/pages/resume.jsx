@@ -1,13 +1,13 @@
 import React from 'react';
-import { Typography, Box, Divider } from '@mui/material';
+import { Typography, Box, Divider, Paper } from '@mui/material';
 
 const Resume = () => {
   return (
-    <Box
+    <Paper
       sx={{
-        backgroundColor: '#f5f5f5',
+        // backgroundColor: '#f5f5f5',
         padding: { xs: 2, sm: 4 },
-        borderRadius: 2,
+        borderRadius: 0,
         maxWidth: '800px',
         margin: 'auto',
         fontFamily: '"Roboto", sans-serif',
@@ -197,7 +197,7 @@ const Resume = () => {
             </ul>
         </Typography>
       </Box>
-    </Box>
+    </Paper>
   );
 };
 

@@ -11,6 +11,14 @@ const theme = createTheme({
                 },
             },
         },
+        MuiPaper: {
+            styleOverrides: {
+                root: {
+                    '--angle': '135deg',
+                    background: 'linear-gradient(var(--angle), rgba(250, 250, 250, 0.5), rgba(240, 248, 255, 0.5))',
+                },
+            },
+        },
     },
 });
 
