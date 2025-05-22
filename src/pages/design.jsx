@@ -44,10 +44,13 @@ const prototypes = [
 // Example graphic design data
 const graphics = [
   {
-    title: "Brand Poster",
-    description: "A bold poster design for a local brand.",
-    imageUrl:
-      "https://res.cloudinary.com/your-cloud/image/upload/v1234567890/poster1.jpg",
+    title: "Design is... Poster",
+    description: "A graphic design project exploring the theme of 'Design is...' using Adobe Illustrator.",
+    imageUrls: [
+      "https://res.cloudinary.com/dcuh2fjgt/image/upload/v1747938734/Exercise1-PreliminaryComp-opt2_teotzf.png",
+      "https://res.cloudinary.com/dcuh2fjgt/image/upload/v1747938695/Exercise1-Final_e6itob.png",
+    ],
+    imageOrientation: "portrait",
     objectives: "Create a visually striking poster for brand awareness.",
     learningOutcomes: "Improved layout and typography skills.",
     skillsApplied: "Adobe Illustrator, Typography, Branding",
@@ -56,7 +59,8 @@ const graphics = [
     title: "Event Flyer",
     description: "A flyer for a community event.",
     imageUrl:
-      "https://res.cloudinary.com/your-cloud/image/upload/v1234567890/flyer1.jpg",
+      "https://res.cloudinary.com/dcuh2fjgt/image/upload/v1747938695/Exercise1-Final_e6itob.png",
+    imageOrientation: "portrait",
     objectives: "Design an engaging flyer for event promotion.",
     learningOutcomes: "Enhanced color theory and composition.",
     skillsApplied: "Photoshop, Layout, Color Theory",
@@ -139,7 +143,7 @@ export default function DesignPage() {
               centered={isMobile}
             >
               <Tab label="Prototyping" />
-              <Tab label="Graphic" />
+              <Tab label="Graphic Design" />
               <Tab label="Illustration" />
             </Tabs>
           </Paper>
