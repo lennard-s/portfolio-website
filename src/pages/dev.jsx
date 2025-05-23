@@ -1,38 +1,66 @@
 import React from "react";
-import { Box, Typography, Card, CardContent, CardMedia } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import DevCard from "../components/devCard";
+
+const projects = [
+  {
+    title: "Full-Stack Web App",
+    description:
+      "A club management web application built with React, Node.js, and MySQL.",
+    videoUrl: "https://www.youtube.com/embed/example1",
+    repoUrl: "https://github.com/lennard-s/DIO",
+    objectives: "Build a modular and scalable membership management system to track member status and participation.",
+    learningOutcomes: "Full-stack development, REST APIs, authentication, data visualization, database design & construction.",
+    techStack: ['React', 'Node.js', 'MySQL', 'Express'],
+  },
+  {
+    title: "Mobile App",
+    description:
+      "A cross-platform mobile app developed using Flutter for tracking fitness goals and progress.",
+    videoUrl: "https://www.youtube.com/embed/example2",
+  },
+  {
+    title: "Project 3: Machine Learning Model",
+    description:
+      "A machine learning model for predicting housing prices using Python and TensorFlow.",
+    videoUrl: "https://www.youtube.com/embed/example3",
+  },
+  // ...add more projects as needed
+];
+
+const settings = {
+  dots: true,
+  adaptiveHeight: true,
+  infinite: true,
+  centerMode: true,
+  centerPadding: "5px",
+  centered: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  swipeToSlide: true,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 1,
+      },
+    },
+  ],
+};
 
 export default function DevPage() {
-  const projects = [
-    {
-      title: "Project 1: Full-Stack Web App",
-      description:
-        "A full-stack web application built with React, Node.js, and MySQL for managing club memberships.",
-      videoUrl: "https://www.youtube.com/embed/example1",
-    },
-    {
-      title: "Project 2: Mobile App",
-      description:
-        "A cross-platform mobile app developed using Flutter for tracking fitness goals and progress.",
-      videoUrl: "https://www.youtube.com/embed/example2",
-    },
-    {
-      title: "Project 3: Machine Learning Model",
-      description:
-        "A machine learning model for predicting housing prices using Python and TensorFlow.",
-      videoUrl: "https://www.youtube.com/embed/example3",
-    },
-  ];
-
   return (
     <Box
       sx={{
         minHeight: "100vh",
         display: "flex",
         flexDirection: "column",
-        justifyContent: "flex-start",
         alignItems: "center",
         padding: 4,
-        overflow: "hidden", // Prevent horizontal scrolling on the entire page
       }}
     >
       <Typography
@@ -46,51 +74,12 @@ export default function DevPage() {
       >
         Development Projects
       </Typography>
-      <Box
-        sx={{
-          display: "flex",
-          overflowX: "auto", // Enable horizontal scrolling for this container only
-          gap: 3,
-          padding: 2,
-          scrollSnapType: "x mandatory",
-          "&::-webkit-scrollbar": { display: "none" }, // Hide scrollbar for a cleaner look
-        }}
-      >
-        {projects.map((project, index) => (
-          <Card
-            key={index}
-            sx={{
-              minWidth: "300px",
-              maxWidth: "400px",
-              flexShrink: 0,
-              scrollSnapAlign: "center",
-              backgroundColor: "#fff",
-              boxShadow: 1,
-              borderRadius: 2,
-            }}
-          >
-            <CardMedia
-              component="iframe"
-              src={project.videoUrl}
-              title={project.title}
-              sx={{
-                height: 200,
-                border: "none",
-              }}
-            />
-            <CardContent>
-              <Typography
-                variant="h6"
-                sx={{ fontWeight: "bold", marginBottom: 1 }}
-              >
-                {project.title}
-              </Typography>
-              <Typography variant="body2" sx={{ color: "#555" }}>
-                {project.description}
-              </Typography>
-            </CardContent>
-          </Card>
-        ))}
+      <Box sx={{ width: "100%", maxWidth: 900 }}>
+        <Slider {...settings}>
+          {projects.map((project, idx) => (
+            <DevCard key={idx} {...project} />
+          ))}
+        </Slider>
       </Box>
     </Box>
   );

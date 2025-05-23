@@ -44,6 +44,28 @@ const theme = createTheme({
         },
       },
     },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          "--angle": "45deg",
+          background:
+            "linear-gradient(var(--angle), rgb(41,51,82), rgb(93,93,111))", // fallback for rgb %
+          backgroundImage:
+            "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
+          color: "#fff",
+          fontWeight: 550,
+        },
+        label: {
+          background:
+            "linear-gradient(var(--angle), rgb(247,183,163), rgb(235,186,185), rgb(242,216,216), rgb(240,234,214))", // fallback
+          backgroundImage:
+            "linear-gradient(var(--angle), rgb(96.9% 71.8% 63.9%), rgb(92.2% 72.9% 72.5%), rgb(94.9% 84.7% 84.7%), rgb(94.1% 91.8% 83.9%))",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+        },
+      },
+    },
   },
 });
 
