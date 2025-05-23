@@ -92,12 +92,12 @@ export default function DevCard({
               </Typography>
               <Typography variant="body2">{learningOutcomes}</Typography>
             </Paper>
-            <Paper elevation={1} sx={{ p: 2 }}>
+            {/* <Paper elevation={1} sx={{ p: 2 }}>
               <Typography variant="h6" sx={{ mb: 1 }}>
                 Tech Stack
               </Typography>
               <Typography variant="body2">{techStack}</Typography>
-            </Paper>
+            </Paper> */}
             {repoUrl && (
               <Paper elevation={1} sx={{ p: 2 }}>
                 <Typography variant="h6" sx={{ mb: 1 }}>

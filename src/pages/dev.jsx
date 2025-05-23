@@ -12,23 +12,30 @@ const projects = [
       "A club management web application built with React, Node.js, and MySQL.",
     videoUrl: "https://www.youtube.com/embed/example1",
     repoUrl: "https://github.com/lennard-s/DIO",
-    objectives: "Build a modular and scalable membership management system to track member status and participation.",
-    learningOutcomes: "Full-stack development, REST APIs, authentication, data visualization, database design & construction.",
-    techStack: ['React', 'Node.js', 'MySQL', 'Express'],
+    objectives:
+      "Build a modular and scalable membership management system to track member status and participation.",
+    learningOutcomes:
+      "Project Management, Full-stack development, REST APIs, authentication, data visualization, database design & construction.",
+    techStack: ["React", "Node.js", "MySQL", "Express"],
   },
   {
     title: "Mobile App",
     description:
       "A cross-platform mobile app developed using Flutter for tracking fitness goals and progress.",
     videoUrl: "https://www.youtube.com/embed/example2",
+    techStack: ["Swift"],
   },
   {
-    title: "Project 3: Machine Learning Model",
-    description:
-      "A machine learning model for predicting housing prices using Python and TensorFlow.",
+    title: "Rush Hour Game",
+    description: "A Java implementation of the game 'Rush Hour'.",
     videoUrl: "https://www.youtube.com/embed/example3",
+    repoUrl: "https://github.com/lennard-s/RushHour_Java",
+    techStack: ["Java", "JavaFX"],
+    objectives:
+      "Create a playable version of the game 'Rush Hour' with a focus on object-oriented design, CLI development, and algorithm implementation.",
+    learningOutcomes:
+      "Object-oriented programming, JavaFX, user interface design, team programming.",
   },
-  // ...add more projects as needed
 ];
 
 const settings = {
