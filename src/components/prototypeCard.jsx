@@ -6,7 +6,10 @@ import {
   Typography,
   Paper,
   Button,
+  IconButton,
+  Tooltip,
 } from "@mui/material";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
 export default function PrototypeCard({
   title,
@@ -35,14 +38,16 @@ export default function PrototypeCard({
       }}
     >
       {/* Read More Button */}
-      <Button
-        variant="outlined"
-        size="small"
-        sx={{ position: "absolute", top: 8, right: 8 }}
-        onClick={() => setShowDetails(!showDetails)}
-      >
-        {showDetails ? "Back to Media" : "Read More"}
-      </Button>
+      <Tooltip title={showDetails ? "Hide details" : "Show details"}>
+        <IconButton
+          size="large"
+          sx={{ position: "absolute", top: 8, right: 8 }}
+          onClick={() => setShowDetails(!showDetails)}
+          aria-label={showDetails ? "Hide details" : "Show details"}
+        >
+          <InfoOutlinedIcon />
+        </IconButton>
+      </Tooltip>
       <Typography variant="h5" align="left" sx={{ color: "#333" }}>
         {title}
       </Typography>
@@ -93,6 +98,7 @@ export default function PrototypeCard({
             )}
           </>
         )}
+        {/* More Details Section */}
         {showDetails && (
           <Box
             sx={{
@@ -103,24 +109,30 @@ export default function PrototypeCard({
               height: "100%",
               overflowY: "auto",
               p: 2,
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+              background: "transparent",
             }}
           >
-            <Typography variant="h6" sx={{ mb: 1 }}>
-              Objectives
-            </Typography>
-            <Typography variant="body2" sx={{ mb: 2 }}>
-              {objectives}
-            </Typography>
-            <Typography variant="h6" sx={{ mb: 1 }}>
-              Learning Outcomes
-            </Typography>
-            <Typography variant="body2" sx={{ mb: 2 }}>
-              {learningOutcomes}
-            </Typography>
-            <Typography variant="h6" sx={{ mb: 1 }}>
-              Skills Applied
-            </Typography>
-            <Typography variant="body2">{skillsApplied}</Typography>
+            <Paper elevation={1} sx={{ p: 2 }}>
+              <Typography variant="h6" sx={{ mb: 1 }}>
+                Objectives
+              </Typography>
+              <Typography variant="body2">{objectives}</Typography>
+            </Paper>
+            <Paper elevation={1} sx={{ p: 2 }}>
+              <Typography variant="h6" sx={{ mb: 1 }}>
+                Learning Outcomes
+              </Typography>
+              <Typography variant="body2">{learningOutcomes}</Typography>
+            </Paper>
+            <Paper elevation={1} sx={{ p: 2 }}>
+              <Typography variant="h6" sx={{ mb: 1 }}>
+                Skills Applied
+              </Typography>
+              <Typography variant="body2">{skillsApplied}</Typography>
+            </Paper>
           </Box>
         )}
       </Box>

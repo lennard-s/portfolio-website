@@ -9,6 +9,19 @@ const theme = createTheme({
           minHeight: "100vh",
           backgroundAttachment: "fixed",
         },
+        // Custom scrollbar styles
+        "*::-webkit-scrollbar": {
+          width: "8px",
+          background: "transparent",
+        },
+        "*::-webkit-scrollbar-thumb": {
+          background: "rgba(120, 144, 156, 0.3)",
+          borderRadius: "8px",
+        },
+        "*": {
+          scrollbarColor: "rgba(120,144,156,0.3) transparent",
+          scrollbarWidth: "thin",
+        },
       },
     },
     MuiPaper: {

@@ -136,7 +136,7 @@ const Resume = () => {
           variant="body1"
           sx={{ fontWeight: "medium", color: "#444", marginBottom: 0.5 }}
         >
-          Senior Capstone (2024-2025)
+          Senior Capstone | 2024-2025 
         </Typography>
         <Typography variant="body2" sx={{ color: "#777", marginBottom: 1 }}>
           <ul style={{ margin: 0, paddingLeft: "1.5rem" }}>
@@ -155,7 +155,7 @@ const Resume = () => {
           variant="body1"
           sx={{ fontWeight: "medium", color: "#444", marginBottom: 0.5 }}
         >
-          Post-Project Review System (2021)
+          Post-Project Review System | 2021
         </Typography>
         <Typography variant="body2" sx={{ color: "#777" }}>
           <ul style={{ margin: 0, paddingLeft: "1.5rem" }}>

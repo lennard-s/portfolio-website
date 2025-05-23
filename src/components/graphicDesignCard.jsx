@@ -5,10 +5,10 @@ import {
   Paper,
   IconButton,
   Modal,
+  Tooltip,
 } from "@mui/material";
 import ZoomOutMapIcon from "@mui/icons-material/ZoomOutMap";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import Tooltip from "@mui/material/Tooltip";
 
 export default function GraphicDesignCard({
   title,
@@ -176,24 +176,30 @@ export default function GraphicDesignCard({
               height: "100%",
               overflowY: "auto",
               p: 2,
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+              background: "transparent",
             }}
           >
-            <Typography variant="h6" sx={{ mb: 1 }}>
-              Objectives
-            </Typography>
-            <Typography variant="body2" sx={{ mb: 2 }}>
-              {objectives}
-            </Typography>
-            <Typography variant="h6" sx={{ mb: 1 }}>
-              Learning Outcomes
-            </Typography>
-            <Typography variant="body2" sx={{ mb: 2 }}>
-              {learningOutcomes}
-            </Typography>
-            <Typography variant="h6" sx={{ mb: 1 }}>
-              Skills Applied
-            </Typography>
-            <Typography variant="body2">{skillsApplied}</Typography>
+            <Paper elevation={1} sx={{ p: 2 }}>
+              <Typography variant="h6" sx={{ mb: 1 }}>
+                Objectives
+              </Typography>
+              <Typography variant="body2">{objectives}</Typography>
+            </Paper>
+            <Paper elevation={1} sx={{ p: 2 }}>
+              <Typography variant="h6" sx={{ mb: 1 }}>
+                Learning Outcomes
+              </Typography>
+              <Typography variant="body2">{learningOutcomes}</Typography>
+            </Paper>
+            <Paper elevation={1} sx={{ p: 2 }}>
+              <Typography variant="h6" sx={{ mb: 1 }}>
+                Skills Applied
+              </Typography>
+              <Typography variant="body2">{skillsApplied}</Typography>
+            </Paper>
           </Box>
         )}
       </Box>

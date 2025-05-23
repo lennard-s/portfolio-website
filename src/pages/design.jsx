@@ -25,6 +25,11 @@ const prototypes = [
       "https://embed.figma.com/proto/g0v2A1yKpF2Sgtct9BbTzx/Tamagotchi-BRONT----?page-id=0%3A1&node-id=142-316&starting-point-node-id=34%3A10&embed-host=share",
     youtubeEmbedCode:
       "https://www.youtube.com/embed/IPbW7ZShpjg?si=XDgXpWKmrPZ_tOZl",
+    objectives:
+      "Practice thinking through and planning each step of a user's experience with a product.",
+    learningOutcomes:
+      "Advanced Figma prototyping, user flow planning and execution, ergonomics.",
+    skillsApplied: "Figma, Spline, Typography, Layout, Animation, User Flow",
   },
   {
     title: "Campus Maps Redesign",
