@@ -44,26 +44,26 @@ const prototypes = [
 // Example graphic design data
 const graphics = [
   {
-    title: "Design is... Poster",
-    description: "A graphic design project exploring the theme of 'Design is...' using Adobe Illustrator.",
+    title: "Design is...",
+    description: "Exploring the theme of 'Design is...' using Adobe Illustrator.",
     imageUrls: [
       "https://res.cloudinary.com/dcuh2fjgt/image/upload/v1747938734/Exercise1-PreliminaryComp-opt2_teotzf.png",
       "https://res.cloudinary.com/dcuh2fjgt/image/upload/v1747938695/Exercise1-Final_e6itob.png",
     ],
     imageOrientation: "portrait",
-    objectives: "Create a visually striking poster for brand awareness.",
-    learningOutcomes: "Improved layout and typography skills.",
-    skillsApplied: "Adobe Illustrator, Typography, Branding",
+    objectives: "Explore the fundamentals of design to create visually engaging graphics.",
+    learningOutcomes: "Improved layout, typography, and color theory skills.",
+    skillsApplied: "Adobe Illustrator, Typography, Layout",
   },
   {
-    title: "Event Flyer",
-    description: "A flyer for a community event.",
+    title: "Campus News Website",
+    description: "A redesign of a campus news site.",
     imageUrl:
-      "https://res.cloudinary.com/dcuh2fjgt/image/upload/v1747938695/Exercise1-Final_e6itob.png",
+      "https://res.cloudinary.com/dcuh2fjgt/image/upload/v1747938664/P1-Final_j98yzp.jpg",
     imageOrientation: "portrait",
-    objectives: "Design an engaging flyer for event promotion.",
-    learningOutcomes: "Enhanced color theory and composition.",
-    skillsApplied: "Photoshop, Layout, Color Theory",
+    objectives: "Design a campus news landing page from scratch.",
+    learningOutcomes: "Enhanced grid composition, hierarchy, and user-flow skills.",
+    skillsApplied: "Figma, Layout, Typography",
   },
   // Add more as needed
 ];
@@ -76,7 +76,7 @@ const settings = {
   centerPadding: "5px",
   centered: true,
   speed: 500,
-  slidesToShow: 1, // Number of cards visible at once
+  slidesToShow: 1,
   slidesToScroll: 1,
   swipeToSlide: true,
   responsive: [
@@ -107,7 +107,6 @@ export default function DesignPage() {
           flexDirection: { xs: "column", md: "row" },
           justifyContent: "center",
           p: 2,
-          // border: '2px solid #FFA500', // Orange border for the entire page
         }}
       >
         {/* Tabs Section */}
@@ -159,7 +158,6 @@ export default function DesignPage() {
             flexDirection: "column",
             justifyContent: "flex-start",
             mx: { xs: "auto", md: "unset" },
-            // border: '2px solid #0000FF', // Blue border for the main content
           }}
         >
           <Typography

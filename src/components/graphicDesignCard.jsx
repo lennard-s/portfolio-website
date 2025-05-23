@@ -3,11 +3,12 @@ import {
   Box,
   Typography,
   Paper,
-  Button,
   IconButton,
   Modal,
 } from "@mui/material";
-import ZoomOutMapIcon from "@mui/icons-material/ZoomOutMap"; // Add this import
+import ZoomOutMapIcon from "@mui/icons-material/ZoomOutMap";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import Tooltip from "@mui/material/Tooltip";
 
 export default function GraphicDesignCard({
   title,
@@ -27,20 +28,29 @@ export default function GraphicDesignCard({
   const images =
     imageUrls && imageUrls.length > 0 ? imageUrls : imageUrl ? [imageUrl] : [];
 
-  // Set aspect ratio based on orientation
-  const aspectRatio = imageOrientation === "portrait" ? "75%" : "56.25%"; // 4:3 for portrait, 16:9 for landscape
-
   return (
-    <Paper sx={{ p: 2, m: 1, position: "relative" }}>
+    <Paper
+      sx={{
+        p: 2,
+        m: 1, // spacing between cards
+        position: "relative",
+        display: "flex",
+        flexDirection: "column",
+        maxHeight: { xs: "none", md: "80vh" }, // Limit height on larger screens
+        overflow: "hidden",
+      }}
+    >
       {/* Read More Button */}
-      <Button
-        variant="outlined"
-        size="small"
-        sx={{ position: "absolute", top: 8, right: 8 }}
-        onClick={() => setShowDetails(!showDetails)}
-      >
-        {showDetails ? "Back to Image" : "Read More"}
-      </Button>
+      <Tooltip title={showDetails ? "Hide details" : "Show details"}>
+        <IconButton
+          size="large"
+          sx={{ position: "absolute", top: 8, right: 8 }}
+          onClick={() => setShowDetails(!showDetails)}
+          aria-label={showDetails ? "Hide details" : "Show details"}
+        >
+          <InfoOutlinedIcon />
+        </IconButton>
+      </Tooltip>
       <Typography variant="h5" align="left" sx={{ color: "#333" }}>
         {title}
       </Typography>
@@ -53,8 +63,9 @@ export default function GraphicDesignCard({
         sx={{
           position: "relative",
           width: "100%",
-          paddingBottom: aspectRatio,
-          mb: 1,
+          height: { xs: "40vh", md: 970 }, // Fixed image area height
+          maxHeight: "90vh", // Prevents image area from getting too tall
+          background: "transparent",
         }}
       >
         {!showDetails && images.length > 0 && (
@@ -63,8 +74,8 @@ export default function GraphicDesignCard({
               position: "absolute",
               top: 0,
               left: 0,
-              width: "100%",
-              height: "100%",
+              width: "95%",
+              height: "95%",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -97,7 +108,7 @@ export default function GraphicDesignCard({
                 transition: "opacity 0.3s",
               }}
             />
-            {/* Thumbnails or dot gallery */}
+            {/* Thumbnails */}
             {images.length > 1 && (
               <Box
                 sx={{
@@ -195,12 +206,11 @@ export default function GraphicDesignCard({
         <Box
           sx={{
             outline: "none",
-            maxWidth: "90vw",
-            maxHeight: "90vh",
+            maxWidth: "99vw",
+            maxHeight: "99vh",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            bgcolor: "rgba(0,0,0,0.95)",
             borderRadius: 2,
             p: 2,
           }}
@@ -209,8 +219,8 @@ export default function GraphicDesignCard({
             src={images[currentImage]}
             alt={`${title} fullscreen`}
             style={{
-              maxWidth: "80vw",
-              maxHeight: "80vh",
+              maxWidth: "95vw",
+              maxHeight: "95vh",
               objectFit: "contain",
               borderRadius: 8,
               background: "transparent",
