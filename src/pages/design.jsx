@@ -8,11 +8,12 @@ import {
   Typography,
   Paper,
 } from "@mui/material";
-import PrototypeCard from "../components/prototypeCard";
-import GraphicDesignCard from "../components/graphicDesignCard";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import PrototypeCard from "../components/prototypeCard";
+import GraphicDesignCard from "../components/graphicDesignCard";
+import PortfolioImageList from "../components/imageList";
 
 // prototype data
 const prototypes = [
@@ -45,13 +46,15 @@ const prototypes = [
 const graphics = [
   {
     title: "Design is...",
-    description: "Exploring the theme of 'Design is...' using Adobe Illustrator.",
+    description:
+      "Exploring the theme of 'Design is...' using Adobe Illustrator.",
     imageUrls: [
       "https://res.cloudinary.com/dcuh2fjgt/image/upload/v1747938734/Exercise1-PreliminaryComp-opt2_teotzf.png",
       "https://res.cloudinary.com/dcuh2fjgt/image/upload/v1747938695/Exercise1-Final_e6itob.png",
     ],
     imageOrientation: "portrait",
-    objectives: "Explore the fundamentals of design to create visually engaging graphics.",
+    objectives:
+      "Explore the fundamentals of design to create visually engaging graphics.",
     learningOutcomes: "Improved layout, typography, and color theory skills.",
     skillsApplied: "Adobe Illustrator, Typography, Layout",
   },
@@ -62,7 +65,8 @@ const graphics = [
       "https://res.cloudinary.com/dcuh2fjgt/image/upload/v1747938664/P1-Final_j98yzp.jpg",
     imageOrientation: "portrait",
     objectives: "Design a campus news landing page from scratch.",
-    learningOutcomes: "Enhanced grid composition, hierarchy, and user-flow skills.",
+    learningOutcomes:
+      "Enhanced grid composition, hierarchy, and user-flow skills.",
     skillsApplied: "Figma, Layout, Typography",
   },
   // Add more as needed
@@ -185,15 +189,7 @@ export default function DesignPage() {
               ))}
             </Slider>
           )}
-          {selectedTab === 2 && (
-            <Typography
-              variant="body1"
-              sx={{ color: "#555", textAlign: "center" }}
-            >
-              Illustration content goes here. Showcase your digital or
-              traditional illustrations.
-            </Typography>
-          )}
+          {selectedTab === 2 && <PortfolioImageList />}
         </Box>
       </Box>
     </>
