@@ -10,7 +10,7 @@ const projects = [
     title: "Full-Stack Web App",
     description:
       "A club management web application built with React, Node.js, and MySQL.",
-    videoUrl: "https://www.youtube.com/embed/example1",
+    videoUrl: ["https://www.youtube.com/embed/example1","https://www.youtube.com/embed/example2"],
     repoUrl: "https://github.com/lennard-s/DIO",
     objectives:
       "Build a modular and scalable membership management system to track member status and participation.",

@@ -5,6 +5,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  overflow-y: scroll;
+}
+
 body {
   margin: 0;
   min-width: 320px;
