@@ -52,7 +52,11 @@ export default function LandingPage() {
         {/* Column 1: Education */}
         <Box sx={{ textAlign: "center", flex: 1 }}>
           <SchoolIcon
-            sx={{ fontSize: 50, color: "#1976d2", marginBottom: 2 }}
+            sx={{
+              fontSize: 50,
+              color: "rgb(16.1% 20% 32.2%)",
+              marginBottom: 0,
+            }}
           />
           <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 1 }}>
             Education
@@ -70,7 +74,13 @@ export default function LandingPage() {
 
         {/* Column 2: Skills */}
         <Box sx={{ textAlign: "center", flex: 1 }}>
-          <BuildIcon sx={{ fontSize: 50, color: "#1976d2", marginBottom: 2 }} />
+          <BuildIcon
+            sx={{
+              fontSize: 50,
+              color: "rgb(16.1% 20% 32.2%)",
+              marginBottom: 0,
+            }}
+          />
           <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 1 }}>
             Skills
           </Typography>
@@ -87,7 +97,13 @@ export default function LandingPage() {
 
         {/* Column 3: Toolkit */}
         <Box sx={{ textAlign: "center", flex: 1 }}>
-          <CodeIcon sx={{ fontSize: 50, color: "#1976d2", marginBottom: 2 }} />
+          <CodeIcon
+            sx={{
+              fontSize: 50,
+              color: "rgb(16.1% 20% 32.2%)",
+              marginBottom: 0,
+            }}
+          />
           <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 1 }}>
             Toolkit
           </Typography>

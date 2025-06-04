@@ -6,8 +6,6 @@ import {
   Paper,
   IconButton,
   Tooltip,
-  Chip,
-  Stack,
   Divider,
   useTheme,
   useMediaQuery,

@@ -3,7 +3,6 @@ import {
   Box,
   ImageList,
   ImageListItem,
-  ImageListItemBar,
   Modal,
   IconButton,
 } from "@mui/material";
