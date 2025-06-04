@@ -4,6 +4,29 @@ import SchoolIcon from "@mui/icons-material/School";
 import BuildIcon from "@mui/icons-material/Build";
 import CodeIcon from "@mui/icons-material/Code";
 
+const portraitStyles = {
+  width: 220,
+  height: 260,
+  borderRadius: 4,
+  overflow: "hidden",
+  boxShadow: "20px 20px 60px #bebebe, -20px -20px 60px #ffffff",
+  background: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+};
+
+const columnStyles = {
+  textAlign: "center",
+  flex: 1,
+};
+
+const iconStyles = {
+  fontSize: 50,
+  color: "rgb(16.1% 20% 32.2%)",
+  marginBottom: 0,
+};
+
 export default function LandingPage() {
   return (
     <Box
@@ -24,17 +47,18 @@ export default function LandingPage() {
           marginBottom: 4,
         }}
       >
-        <img
-          alt="Portrait of Lennard Szyperski"
-          src="/portrait.jpg"
-          style={{
-            width: 200,
-            height: 200,
-            borderRadius: "50%",
-            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
-            objectFit: "cover",
-          }}
-        />
+        <Box sx={portraitStyles}>
+          <img
+            alt="Portrait of Lennard Szyperski"
+            src="/portrait.jpg"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              display: "block",
+            }}
+          />
+        </Box>
       </Box>
 
       {/* Introduction Section */}
@@ -50,14 +74,8 @@ export default function LandingPage() {
         }}
       >
         {/* Column 1: Education */}
-        <Box sx={{ textAlign: "center", flex: 1 }}>
-          <SchoolIcon
-            sx={{
-              fontSize: 50,
-              color: "rgb(16.1% 20% 32.2%)",
-              marginBottom: 0,
-            }}
-          />
+        <Box sx={columnStyles}>
+          <SchoolIcon sx={iconStyles} />
           <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 1 }}>
             Education
           </Typography>
@@ -73,14 +91,8 @@ export default function LandingPage() {
         </Box>
 
         {/* Column 2: Skills */}
-        <Box sx={{ textAlign: "center", flex: 1 }}>
-          <BuildIcon
-            sx={{
-              fontSize: 50,
-              color: "rgb(16.1% 20% 32.2%)",
-              marginBottom: 0,
-            }}
-          />
+        <Box sx={columnStyles}>
+          <BuildIcon sx={iconStyles} />
           <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 1 }}>
             Skills
           </Typography>
@@ -96,14 +108,8 @@ export default function LandingPage() {
         </Box>
 
         {/* Column 3: Toolkit */}
-        <Box sx={{ textAlign: "center", flex: 1 }}>
-          <CodeIcon
-            sx={{
-              fontSize: 50,
-              color: "rgb(16.1% 20% 32.2%)",
-              marginBottom: 0,
-            }}
-          />
+        <Box sx={columnStyles}>
+          <CodeIcon sx={iconStyles} />
           <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 1 }}>
             Toolkit
           </Typography>
