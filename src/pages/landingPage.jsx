@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Typography, Card, CardContent, Fade } from "@mui/material";
+import { Link } from "react-router-dom";
 import SchoolIcon from "@mui/icons-material/School";
 import BuildIcon from "@mui/icons-material/Build";
 import CodeIcon from "@mui/icons-material/Code";
@@ -47,13 +48,14 @@ export default function LandingPage() {
         alignItems: "center",
         justifyContent: "center",
         pt: { xs: 15, md: 8 },
+        mb: { xs: 20, md: 0 },
       }}
     >
       <Fade in={show} timeout={400}>
         <Card
           elevation={8}
           sx={{
-            borderRadius: 6,
+            borderRadius: {xs: 0, md: 6},
             minWidth: { xs: "90vw", md: 900 },
             maxWidth: 1100,
             padding: { xs: 2, md: 4 },
@@ -114,16 +116,25 @@ export default function LandingPage() {
             {/* Column 1: Education */}
             <Box sx={columnStyles}>
               <SchoolIcon sx={iconStyles} />
-              <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 1 }}>
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: "bold", marginBottom: 1 }}
+              >
                 Education
               </Typography>
-              <Typography variant="body1" sx={{ color: "#555" }}>
+              <Typography variant="h6" sx={{ color: "#555", fontWeight: 500 }}>
                 Rochester Institute of Technology
               </Typography>
-              <Typography variant="body2" sx={{ color: "#777" }}>
+              <Typography
+                variant="body1"
+                sx={{ color: "#777", fontSize: "1.1rem" }}
+              >
                 BS in Human Centered Computing
               </Typography>
-              <Typography variant="body2" sx={{ color: "#777" }}>
+              <Typography
+                variant="body1"
+                sx={{ color: "#777", fontSize: "1.1rem" }}
+              >
                 3.92 GPA, Summa Cum Laude
               </Typography>
             </Box>
@@ -131,16 +142,90 @@ export default function LandingPage() {
             {/* Column 2: Skills */}
             <Box sx={columnStyles}>
               <BuildIcon sx={iconStyles} />
-              <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 1 }}>
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: "bold", marginBottom: 1 }}
+              >
                 Skills
               </Typography>
-              <Typography variant="body1" sx={{ color: "#555" }}>
-                Technical Project Management
-              </Typography>
-              <Typography variant="body1" sx={{ color: "#555" }}>
-                Full-Stack Development
-              </Typography>
-              <Typography variant="body1" sx={{ color: "#555" }}>
+              <Box>
+                <Typography
+                  variant="body1"
+                  component={Link}
+                  to="/dev"
+                  sx={{
+                    display: "inline-block",
+                    color: "#333",
+                    textDecoration: "none",
+                    background: "rgba(16, 20, 32, 0.06)",
+                    borderRadius: 2,
+                    px: 1.5,
+                    py: 0.5,
+                    fontWeight: 500,
+                    transition: "background 0.2s, box-shadow 0.2s",
+                    boxShadow: "none",
+                    cursor: "pointer",
+                    mb: 1,
+                    "&:hover, &:focus": {
+                      background: "rgba(16, 20, 32, 0.13)",
+                      boxShadow: "0 2px 8px 0 rgba(31, 38, 135, 0.08)",
+                      textDecoration: "none",
+                    },
+                  }}
+                >
+                  Technical Project Management
+                </Typography>
+                <Typography
+                  variant="body1"
+                  component={Link}
+                  to="/dev"
+                  sx={{
+                    display: "inline-block",
+                    color: "#333",
+                    textDecoration: "none",
+                    background: "rgba(16, 20, 32, 0.06)",
+                    borderRadius: 2,
+                    px: 1.5,
+                    py: 0.5,
+                    fontWeight: 500,
+                    transition: "background 0.2s, box-shadow 0.2s",
+                    boxShadow: "none",
+                    cursor: "pointer",
+                    mb: 1,
+                    ml: 1,
+                    "&:hover, &:focus": {
+                      background: "rgba(16, 20, 32, 0.13)",
+                      boxShadow: "0 2px 8px 0 rgba(31, 38, 135, 0.08)",
+                      textDecoration: "none",
+                    },
+                  }}
+                >
+                  Full-Stack Development
+                </Typography>
+              </Box>
+              <Typography
+                variant="body1"
+                component={Link}
+                to="/design"
+                sx={{
+                  display: "inline-block",
+                  color: "#333",
+                  textDecoration: "none",
+                  background: "rgba(16, 20, 32, 0.06)",
+                  borderRadius: 2,
+                  px: 1.5,
+                  py: 0.5,
+                  fontWeight: 500,
+                  transition: "background 0.2s, box-shadow 0.2s",
+                  boxShadow: "none",
+                  cursor: "pointer",
+                  "&:hover, &:focus": {
+                    background: "rgba(16, 20, 32, 0.13)",
+                    boxShadow: "0 2px 8px 0 rgba(31, 38, 135, 0.08)",
+                    textDecoration: "none",
+                  },
+                }}
+              >
                 UX/UI Design
               </Typography>
             </Box>
@@ -148,16 +233,19 @@ export default function LandingPage() {
             {/* Column 3: Toolkit */}
             <Box sx={columnStyles}>
               <CodeIcon sx={iconStyles} />
-              <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 1 }}>
+              <Typography
+                variant="h6"
+                sx={{ fontWeight: "bold", marginBottom: 1 }}
+              >
                 Toolkit
               </Typography>
-              <Typography variant="body1" sx={{ color: "#555" }}>
+              <Typography variant="body1" sx={{ color: "#555", fontSize: "1.1rem" }}>
                 React, JavaScript, MySQL
               </Typography>
-              <Typography variant="body1" sx={{ color: "#555" }}>
+              <Typography variant="body1" sx={{ color: "#555", fontSize: "1.1rem" }}>
                 Node.js, Figma, Git
               </Typography>
-              <Typography variant="body1" sx={{ color: "#555" }}>
+              <Typography variant="body1" sx={{ color: "#555", fontSize: "1.1rem" }}>
                 Material-UI, Java
               </Typography>
             </Box>

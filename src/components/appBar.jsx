@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -28,9 +28,13 @@ const tabsGradient =
 export default function AppBarComponent() {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("sm")); // Detect mobile screens
-  const location = useLocation(); // Get the current route
-  const [value, setValue] = useState(location.pathname); // Set the initial value based on the current route
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const location = useLocation();
+  const [value, setValue] = useState(location.pathname);
+
+  useEffect(() => {
+    setValue(location.pathname);
+  }, [location.pathname]);
 
   const handleDrawerToggle = () => {
     setDrawerOpen(!drawerOpen);
