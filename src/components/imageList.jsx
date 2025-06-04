@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   ImageList,
   ImageListItem,
   Modal,
   IconButton,
+  Fade,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close"; // Add this import
 
@@ -99,78 +100,95 @@ export default function PortfolioImageList() {
 
   const handleClose = () => setOpen(false);
 
+  const [showFade, setShowFade] = useState(false);
+
+  useEffect(() => {
+    setShowFade(true);
+  }, []);
+
   return (
-    <Box
-      sx={{ width: "100%", maxWidth: 1200, height: 1000, overflowY: "scroll" }}
-    >
-      <ImageList variant="masonry" cols={3} gap={8}>
-        {itemData.map((item) => (
-          <ImageListItem
-            key={item.img}
-            onClick={() => handleOpen(item.img, item.title)}
-            sx={{ cursor: "pointer" }}
-          >
-            <img
-              srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
-              src={`${item.img}?w=248&fit=crop&auto=format`}
-              alt={item.title}
-              loading="lazy"
-            />
-            {/* <ImageListItemBar
+    <Fade in={showFade} timeout={500}>
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: 1200,
+          height: 1000,
+          overflowY: "scroll",
+        }}
+      >
+        <ImageList variant="masonry" cols={3} gap={8}>
+          {itemData.map((item) => (
+            <ImageListItem
+              key={item.img}
+              onClick={() => handleOpen(item.img, item.title)}
+              sx={{ cursor: "pointer" }}
+            >
+              <img
+                srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                src={`${item.img}?w=248&fit=crop&auto=format`}
+                alt={item.title}
+                loading="lazy"
+              />
+              {/* <ImageListItemBar
               title={item.title}
               //   subtitle={item.author}
             /> */}
-          </ImageListItem>
-        ))}
-      </ImageList>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
-      >
-        <Box
+            </ImageListItem>
+          ))}
+        </ImageList>
+        <Modal
+          open={open}
+          onClose={handleClose}
           sx={{
-            outline: "none",
-            maxWidth: "95vw",
-            maxHeight: "95vh",
             display: "flex",
-            flexDirection: "column",
-            gap: 2,
             alignItems: "center",
             justifyContent: "center",
-            borderRadius: 2,
-            position: "relative",
           }}
         >
-          <IconButton
-            onClick={handleClose}
+          <Box
             sx={{
-              alignSelf: "flex-end",
-              color: "#fff",
-              backgroundColor: "rgba(0,0,0,0.5)",
-              "&:hover": { backgroundColor: "rgba(0,0,0,0.7)" },
-              zIndex: 1,
+              outline: "none",
+              maxWidth: "95vw",
+              maxHeight: "95vh",
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: 2,
+              position: "relative",
             }}
-            aria-label="close"
           >
-            <CloseIcon />
-          </IconButton>
-          <img
-            src={modalImg}
-            alt={modalTitle}
-            style={{
-              maxWidth: "90vw",
-              maxHeight: "80vh",
-              objectFit: "contain",
-              borderRadius: 8,
-              background: "transparent",
-              margin: "auto",
-              display: "block",
-            }}
-          />
-          <Box sx={{ color: "#fff", mt: 2, fontSize: 18 }}>{modalTitle}</Box>
-        </Box>
-      </Modal>
-    </Box>
+            <IconButton
+              onClick={handleClose}
+              sx={{
+                alignSelf: "flex-end",
+                color: "#fff",
+                backgroundColor: "rgba(0,0,0,0.5)",
+                "&:hover": { backgroundColor: "rgba(0,0,0,0.7)" },
+                zIndex: 1,
+              }}
+              aria-label="close"
+            >
+              <CloseIcon />
+            </IconButton>
+            <img
+              src={modalImg}
+              alt={modalTitle}
+              style={{
+                maxWidth: "90vw",
+                maxHeight: "80vh",
+                objectFit: "contain",
+                borderRadius: 8,
+                background: "transparent",
+                margin: "auto",
+                display: "block",
+              }}
+            />
+            <Box sx={{ color: "#fff", mt: 2, fontSize: 18 }}>{modalTitle}</Box>
+          </Box>
+        </Modal>
+      </Box>
+    </Fade>
   );
 }

@@ -12,7 +12,7 @@ export default function BottomBar() {
         bgcolor: "rgba(16, 20, 32, 0.95)",
         color: "#fff",
         p: 1,
-        textAlign: "left",
+        textAlign: "right",
         zIndex: 1300,
         // fontSize: "0.95rem",
         boxShadow: "0 -2px 8px rgba(0,0,0,0.08)",
@@ -20,7 +20,7 @@ export default function BottomBar() {
       }}
     >
       <Typography variant="body2">
-        Designed & Built by: Lennard Szyperski, 2025 
+        Designed & Built by Lennard Szyperski, 2025 
       </Typography>
     </Box>
   );
