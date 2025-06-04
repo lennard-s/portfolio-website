@@ -143,11 +143,89 @@ export default function PrototypeCard({
           exclusive
           onChange={handleMediaTabChange}
           size="small"
+          sx={{
+            background: "transparent",
+            boxShadow: "none",
+            borderRadius: "999px",
+            overflow: "hidden",
+          }}
         >
-          <ToggleButton value={0} sx={{ textTransform: "none" }}>
+          <ToggleButton
+            value={0}
+            sx={{
+              textTransform: "none",
+              background:
+                mediaTab === 0
+                  ? "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))"
+                  : "#24292f",
+              color: "#fff",
+              borderRadius: "999px",
+              fontWeight: 600,
+              px: 2,
+              py: 1,
+              minWidth: 0,
+              transition:
+                "transform 0.15s, box-shadow 0.15s, background 0.15s",
+              "&:hover": {
+                background:
+                  mediaTab === 0
+                    ? "#24292f"
+                    : "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
+                boxShadow: 4,
+                
+              },
+              "&.Mui-selected": {
+                background:
+                  "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
+                color: "#fff",
+              },
+              "&:active": {
+                background:
+                  mediaTab === 0
+                    ? "#24292f"
+                    : "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
+              },
+            }}
+          >
             Figma Prototype
           </ToggleButton>
-          <ToggleButton value={1} sx={{ textTransform: "none" }}>
+          <ToggleButton
+            value={1}
+            sx={{
+              textTransform: "none",
+              background:
+                mediaTab === 1
+                  ? "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))"
+                  : "#24292f",
+              color: "#fff",
+              borderRadius: "999px",
+              fontWeight: 600,
+              px: 2,
+              py: 1,
+              minWidth: 0,
+              transition:
+                "transform 0.15s, box-shadow 0.15s, background 0.15s",
+              "&:hover": {
+                background:
+                  mediaTab === 1
+                    ? "#24292f"
+                    : "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
+                boxShadow: 4,
+                
+              },
+              "&.Mui-selected": {
+                background:
+                  "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
+                color: "#fff",
+              },
+              "&:active": {
+                background:
+                  mediaTab === 1
+                    ? "#24292f"
+                    : "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
+              },
+            }}
+          >
             YouTube Video
           </ToggleButton>
         </ToggleButtonGroup>
