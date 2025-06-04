@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Card, CardContent, Fade } from "@mui/material";
 import SchoolIcon from "@mui/icons-material/School";
 import BuildIcon from "@mui/icons-material/Build";
 import CodeIcon from "@mui/icons-material/Code";
@@ -9,11 +9,16 @@ const portraitStyles = {
   height: 260,
   borderRadius: 4,
   overflow: "hidden",
-  boxShadow: "20px 20px 60px #bebebe, -20px -20px 60px #ffffff",
+  boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.15)",
   background: "linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  transition: "transform 0.4s cubic-bezier(.4,2,.6,1)",
+  willChange: "transform",
+  "&:hover": {
+    transform: "scale(1.04)",
+  },
 };
 
 const columnStyles = {
@@ -28,102 +33,137 @@ const iconStyles = {
 };
 
 export default function LandingPage() {
+  const [show, setShow] = React.useState(false);
+
+  React.useEffect(() => {
+    setShow(true);
+  }, []);
+
   return (
     <Box
       sx={{
-        minHeight: "100vh",
+        maxHeight: { xs: "100vh", md: "100%" },
         display: "flex",
-        flexDirection: "column",
         alignItems: "center",
-        padding: 4,
+        justifyContent: "center",
+        pt: { xs: 15, md: 8 },
       }}
     >
-      {/* Portrait Section */}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          marginBottom: 4,
-        }}
-      >
-        <Box sx={portraitStyles}>
-          <img
-            alt="Portrait of Lennard Szyperski"
-            src="/portrait.jpg"
-            style={{
+      <Fade in={show} timeout={400}>
+        <Card
+          elevation={8}
+          sx={{
+            borderRadius: 6,
+            minWidth: { xs: "90vw", md: 900 },
+            maxWidth: 1100,
+            padding: { xs: 2, md: 4 },
+            background: "rgba(255,255,255,0.75)",
+            boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.18)",
+            backdropFilter: "blur(12px)",
+            transition: "box-shadow 0.4s cubic-bezier(.4,2,.6,1)",
+            "&:hover": {
+              boxShadow: "0 16px 48px 0 rgba(31, 38, 135, 0.22)",
+            },
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          {/* Portrait Section */}
+          <Fade in={show} timeout={1200}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                marginBottom: 4,
+                transition: "transform 0.4s cubic-bezier(.4,2,.6,1)",
+                "&:hover > div": {
+                  transform: "scale(1.04)",
+                },
+              }}
+            >
+              <Box sx={portraitStyles}>
+                <img
+                  alt="Portrait of Lennard Szyperski"
+                  src="/portrait.jpg"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    display: "block",
+                    borderRadius: 16,
+                  }}
+                />
+              </Box>
+            </Box>
+          </Fade>
+
+          {/* Introduction Section */}
+          <CardContent
+            sx={{
               width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              display: "block",
+              padding: 0,
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              justifyContent: "space-between",
+              alignItems: { xs: "center", md: "flex-start" },
+              gap: 4,
             }}
-          />
-        </Box>
-      </Box>
+          >
+            {/* Column 1: Education */}
+            <Box sx={columnStyles}>
+              <SchoolIcon sx={iconStyles} />
+              <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 1 }}>
+                Education
+              </Typography>
+              <Typography variant="body1" sx={{ color: "#555" }}>
+                Rochester Institute of Technology
+              </Typography>
+              <Typography variant="body2" sx={{ color: "#777" }}>
+                BS in Human Centered Computing
+              </Typography>
+              <Typography variant="body2" sx={{ color: "#777" }}>
+                3.92 GPA, Summa Cum Laude
+              </Typography>
+            </Box>
 
-      {/* Introduction Section */}
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: { xs: "column", md: "row" },
-          justifyContent: "space-between",
-          alignItems: { xs: "center", md: "flex-start" },
-          width: "100%",
-          maxWidth: 1200,
-          gap: 4,
-        }}
-      >
-        {/* Column 1: Education */}
-        <Box sx={columnStyles}>
-          <SchoolIcon sx={iconStyles} />
-          <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 1 }}>
-            Education
-          </Typography>
-          <Typography variant="body1" sx={{ color: "#555" }}>
-            Rochester Institute of Technology
-          </Typography>
-          <Typography variant="body2" sx={{ color: "#777" }}>
-            BS in Human Centered Computing
-          </Typography>
-          <Typography variant="body2" sx={{ color: "#777" }}>
-            3.92 GPA, Summa Cum Laude
-          </Typography>
-        </Box>
+            {/* Column 2: Skills */}
+            <Box sx={columnStyles}>
+              <BuildIcon sx={iconStyles} />
+              <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 1 }}>
+                Skills
+              </Typography>
+              <Typography variant="body1" sx={{ color: "#555" }}>
+                Technical Project Management
+              </Typography>
+              <Typography variant="body1" sx={{ color: "#555" }}>
+                Full-Stack Development
+              </Typography>
+              <Typography variant="body1" sx={{ color: "#555" }}>
+                UX/UI Design
+              </Typography>
+            </Box>
 
-        {/* Column 2: Skills */}
-        <Box sx={columnStyles}>
-          <BuildIcon sx={iconStyles} />
-          <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 1 }}>
-            Skills
-          </Typography>
-          <Typography variant="body1" sx={{ color: "#555" }}>
-            Technical Project Management
-          </Typography>
-          <Typography variant="body1" sx={{ color: "#555" }}>
-            Full-Stack Development
-          </Typography>
-          <Typography variant="body1" sx={{ color: "#555" }}>
-            UX/UI Design
-          </Typography>
-        </Box>
-
-        {/* Column 3: Toolkit */}
-        <Box sx={columnStyles}>
-          <CodeIcon sx={iconStyles} />
-          <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 1 }}>
-            Toolkit
-          </Typography>
-          <Typography variant="body1" sx={{ color: "#555" }}>
-            React, JavaScript, MySQL
-          </Typography>
-          <Typography variant="body1" sx={{ color: "#555" }}>
-            Node.js, Figma, Git
-          </Typography>
-          <Typography variant="body1" sx={{ color: "#555" }}>
-            Material-UI, Java
-          </Typography>
-        </Box>
-      </Box>
+            {/* Column 3: Toolkit */}
+            <Box sx={columnStyles}>
+              <CodeIcon sx={iconStyles} />
+              <Typography variant="h6" sx={{ fontWeight: "bold", marginBottom: 1 }}>
+                Toolkit
+              </Typography>
+              <Typography variant="body1" sx={{ color: "#555" }}>
+                React, JavaScript, MySQL
+              </Typography>
+              <Typography variant="body1" sx={{ color: "#555" }}>
+                Node.js, Figma, Git
+              </Typography>
+              <Typography variant="body1" sx={{ color: "#555" }}>
+                Material-UI, Java
+              </Typography>
+            </Box>
+          </CardContent>
+        </Card>
+      </Fade>
     </Box>
   );
 }
