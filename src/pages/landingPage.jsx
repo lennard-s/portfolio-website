@@ -51,7 +51,7 @@ export default function LandingPage() {
         mb: { xs: 20, md: 0 },
       }}
     >
-      <Fade in={show} timeout={400}>
+      <Fade in={show} timeout={500}>
         <Card
           elevation={8}
           sx={{

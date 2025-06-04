@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Fade } from "@mui/material";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,7 +10,10 @@ const projects = [
     title: "Full-Stack Web App",
     description:
       "A club management web application built with React, Node.js, and MySQL.",
-    videoUrl: ["https://www.youtube.com/embed/example1","https://www.youtube.com/embed/example2"],
+    videoUrl: [
+      "https://www.youtube.com/embed/example1",
+      "https://www.youtube.com/embed/example2",
+    ],
     repoUrl: "https://github.com/lennard-s/DIO",
     objectives:
       "Build a modular and scalable membership management system to track member status and participation.",
@@ -60,34 +63,42 @@ const settings = {
 };
 
 export default function DevPage() {
+  const [show, setShow] = React.useState(false);
+
+  React.useEffect(() => {
+    setShow(true);
+  }, []);
+
   return (
-    <Box
-      sx={{
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        padding: 4,
-      }}
-    >
-      <Typography
-        variant="h4"
+    <Fade in={show} timeout={500}>
+      <Box
         sx={{
-          fontWeight: "bold",
-          color: "#333",
-          marginBottom: 4,
-          textAlign: "center",
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          padding: 4,
         }}
       >
-        Development Projects
-      </Typography>
-      <Box sx={{ width: "100%", maxWidth: 900 }}>
-        <Slider {...settings}>
-          {projects.map((project, idx) => (
-            <DevCard key={idx} {...project} />
-          ))}
-        </Slider>
+        <Typography
+          variant="h4"
+          sx={{
+            fontWeight: "bold",
+            color: "#333",
+            marginBottom: 4,
+            textAlign: "center",
+          }}
+        >
+          Development Projects
+        </Typography>
+        <Box sx={{ width: "100%", maxWidth: 900 }}>
+          <Slider {...settings}>
+            {projects.map((project, idx) => (
+              <DevCard key={idx} {...project} />
+            ))}
+          </Slider>
+        </Box>
       </Box>
-    </Box>
+    </Fade>
   );
 }

@@ -7,6 +7,7 @@ import {
   useTheme,
   Typography,
   Paper,
+  Fade,
 } from "@mui/material";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -100,15 +101,20 @@ const settings = {
 
 export default function DesignPage() {
   const [selectedTab, setSelectedTab] = useState(0);
+  const [show, setShow] = React.useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+
+  React.useEffect(() => {
+    setShow(true);
+  }, []);
 
   const handleTabChange = (event, newValue) => {
     if (newValue !== null) setSelectedTab(newValue);
   };
 
   return (
-    <>
+    <Fade in={show} timeout={500}>
       {/* Page Container */}
       <Box
         sx={{
@@ -197,6 +203,6 @@ export default function DesignPage() {
           {selectedTab === 2 && <PortfolioImageList />}
         </Box>
       </Box>
-    </>
+    </Fade>
   );
 }
