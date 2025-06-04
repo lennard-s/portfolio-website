@@ -5,7 +5,9 @@ import {
   ImageListItem,
   ImageListItemBar,
   Modal,
+  IconButton,
 } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close"; // Add this import
 
 const itemData = [
   {
@@ -100,7 +102,7 @@ export default function PortfolioImageList() {
 
   return (
     <Box
-      sx={{ width: "100%", maxWidth: 1200, height: 600, overflowY: "scroll" }}
+      sx={{ width: "100%", maxWidth: 1200, height: 1000, overflowY: "scroll" }}
     >
       <ImageList variant="masonry" cols={3} gap={8}>
         {itemData.map((item) => (
@@ -115,10 +117,10 @@ export default function PortfolioImageList() {
               alt={item.title}
               loading="lazy"
             />
-            <ImageListItemBar
+            {/* <ImageListItemBar
               title={item.title}
               //   subtitle={item.author}
-            />
+            /> */}
           </ImageListItem>
         ))}
       </ImageList>
@@ -134,12 +136,26 @@ export default function PortfolioImageList() {
             maxHeight: "95vh",
             display: "flex",
             flexDirection: "column",
+            gap: 2,
             alignItems: "center",
             justifyContent: "center",
             borderRadius: 2,
-            p: 2,
+            position: "relative",
           }}
         >
+          <IconButton
+            onClick={handleClose}
+            sx={{
+              alignSelf: "flex-end",
+              color: "#fff",
+              backgroundColor: "rgba(0,0,0,0.5)",
+              "&:hover": { backgroundColor: "rgba(0,0,0,0.7)" },
+              zIndex: 1,
+            }}
+            aria-label="close"
+          >
+            <CloseIcon />
+          </IconButton>
           <img
             src={modalImg}
             alt={modalTitle}

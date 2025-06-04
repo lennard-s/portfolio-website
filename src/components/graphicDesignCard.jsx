@@ -113,11 +113,9 @@ export default function GraphicDesignCard({
               <Box
                 sx={{
                   position: "absolute",
-                  bottom: 8,
-                  left: 0,
                   width: "100%",
                   display: "flex",
-                  justifyContent: "flex-end",
+                  flexDirection: "column",
                   gap: { xs: 1, md: 2 }, // slightly larger gap for bigger thumbs
                   zIndex: 2,
                 }}

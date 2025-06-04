@@ -142,11 +142,7 @@ export default function DevCard({
               flexDirection: "row",
               justifyContent: "space-between",
               alignItems: "center",
-              // border: "5px solid #0000FF",
               height: 0,
-              // paddingBottom: "56.25%", // 16:9 aspect ratio
-              // position: "relative",
-              // overflow: "hidden",
               background: "#000",
             }}
           >
@@ -247,6 +243,7 @@ export default function DevCard({
               p: { xs: 2, sm: 3 },
               display: "flex",
               flexDirection: "column",
+              justifyContent: "space-between",
               gap: 2,
               background: "rgba(255, 255, 255, 0.6)",
               backdropFilter: "blur(6px)",
@@ -255,26 +252,32 @@ export default function DevCard({
               zIndex: 2,
             }}
           >
-            <Typography variant="h6" sx={{ fontWeight: 700 }}>
-              Objectives
-            </Typography>
-            <Typography variant="body2" sx={{ mb: 2 }}>
-              {objectives}
-            </Typography>
-            <Divider />
-            <Typography variant="h6" sx={{ fontWeight: 700, mt: 2 }}>
-              Learning Outcomes
-            </Typography>
-            <Typography variant="body2" sx={{ mb: 2 }}>
-              {learningOutcomes}
-            </Typography>
+            <Box>
+              <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                Objectives
+              </Typography>
+              <Typography variant="body2" sx={{ mb: 2 }}>
+                {objectives}
+              </Typography>
+              <Divider />
+              <Typography variant="h6" sx={{ fontWeight: 700, mt: 2 }}>
+                Learning Outcomes
+              </Typography>
+              <Typography variant="body2" sx={{ mb: 2 }}>
+                {learningOutcomes}
+              </Typography>
+              <Divider />
+            </Box>
             {repoUrl && (
               <>
-                <Divider />
-                <Typography variant="h6" sx={{ fontWeight: 700, mt: 2 }}>
-                  Repository
-                </Typography>
-                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    alignItems: "center",
+                    alignSelf: "flex-start",
+                    gap: 1,
+                  }}
+                >
                   <IconButton
                     component="a"
                     href={repoUrl}

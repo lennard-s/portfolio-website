@@ -15,7 +15,7 @@ const projects = [
     objectives:
       "Build a modular and scalable membership management system to track member status and participation.",
     learningOutcomes:
-      "Project Management, Full-stack development, REST APIs, authentication, data visualization, database design & construction.",
+      "Technical Project Management, Full-stack development, REST APIs, authentication, data visualization, database design & construction.",
     techStack: ["React", "Node.js", "MySQL", "Express"],
   },
   {
