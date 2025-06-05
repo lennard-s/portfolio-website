@@ -135,23 +135,33 @@ export default function DesignPage() {
               mb: { xs: 2, md: 0 },
               alignSelf: { xs: "center", md: "flex-start" },
               borderRadius: 1,
+              background: "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
             }}
           >
             <Tabs
               value={selectedTab}
               onChange={handleTabChange}
-              textColor="primary"
-              indicatorColor="primary"
               orientation={isMobile ? "horizontal" : "vertical"}
               variant="scrollable"
+              indicatorColor="primary"
+              textColor="inherit"
               sx={{
+                position: { xs: "fixed", md: "sticky" },
+                top: { xs: "unset", md: 180 }, // Fixed at top on mobile, sticky on desktop
+                bottom: { xs: 0, md: "unset" },
+                width: "fit-content",
+                mb: { xs: 2, md: 0 },
+                alignSelf: { xs: "center", md: "flex-start" },
+                borderRadius: 1,
                 borderBottom: isMobile ? 1 : 0,
                 borderRight: isMobile ? 0 : 1,
+                borderRadius: 1,
                 borderColor: "divider",
-                ".MuiTab-root": {
-                  textTransform: "none",
-                  fontWeight: "medium",
-                  padding: isMobile ? "8px 16px" : "12px 24px",
+                "& .MuiTabs-indicator": {
+                  height: "2px",
+                  borderRadius: "0px",
+                  background:
+                    "linear-gradient(var(--angle), rgb(96.9% 71.8% 63.9%), rgb(92.2% 72.9% 72.5%), rgb(94.9% 84.7% 84.7%), rgb(94.1% 91.8% 83.9%))",
                 },
               }}
               centered={isMobile}

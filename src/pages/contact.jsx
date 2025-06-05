@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Typography, Link, Fade } from "@mui/material";
+import { Box, Typography, Link, Fade, Divider } from "@mui/material";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -35,7 +35,7 @@ export default function ContactPage() {
           Get in Touch
         </Typography>
         <Typography
-          variant="body1"
+          variant="h6"
           sx={{
             color: "#555",
             marginBottom: 4,
@@ -43,9 +43,11 @@ export default function ContactPage() {
             maxWidth: 600,
           }}
         >
-          Feel free to reach out to me via phone, email, or LinkedIn. I’d love
-          to connect and discuss opportunities or collaborations!
+          Feel free to reach out to me via phone, email, or LinkedIn.
+          <br />
+          I’d love to connect and discuss opportunities or collaborations!
         </Typography>
+        <Divider sx={{ width: "60%", marginBottom: 4 }} />
         <Box
           sx={{
             display: "flex",
@@ -56,13 +58,13 @@ export default function ContactPage() {
         >
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <PhoneIcon sx={{ color: "#1976d2" }} />
-            <Typography variant="body1" sx={{ color: "#555" }}>
+            <Typography variant="h6" sx={{ color: "#555" }}>
               (425) 985-4606
             </Typography>
           </Box>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <EmailIcon sx={{ color: "#1976d2" }} />
-            <Typography variant="body1" sx={{ color: "#555" }}>
+            <Typography variant="h6" sx={{ color: "#555" }}>
               <Link
                 href="mailto:lennardszyperski@gmail.com"
                 sx={{ textDecoration: "none", color: "#1976d2" }}
@@ -73,7 +75,7 @@ export default function ContactPage() {
           </Box>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <LinkedInIcon sx={{ color: "#1976d2" }} />
-            <Typography variant="body1" sx={{ color: "#555" }}>
+            <Typography variant="h6" sx={{ color: "#555" }}>
               <Link
                 href="https://www.linkedin.com/in/lennard-szyperski-765718255/"
                 target="_blank"

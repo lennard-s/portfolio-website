@@ -97,7 +97,7 @@ export default function AppBarComponent() {
             Lennard's Portfolio
           </Box>
         </Typography>
-
+        {/* Burger Menu */}
         {isMobile ? (
           <>
             <IconButton

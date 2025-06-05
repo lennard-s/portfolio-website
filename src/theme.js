@@ -68,6 +68,27 @@ const theme = createTheme({
         },
       },
     },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          color: "rgba(60, 70, 110, 0.92)",
+          fontWeight: 500,
+          background:
+            "linear-gradient(var(--angle), rgb(94.1% 91.8% 93.3%), rgb(91% 87.1% 88.2%))",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          backgroundClip: "text",
+          transition: "color 0.2s, font-weight 0.2s",
+          textTransform: "none",
+          padding: "12px 24px",
+        },
+        selected: {
+          fontWeight: 700,
+          WebkitTextFillColor: "unset",
+          color: "#222",
+        },
+      },
+    },
   },
 });
 

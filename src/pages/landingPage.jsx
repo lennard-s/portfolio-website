@@ -1,9 +1,17 @@
 import React from "react";
-import { Box, Typography, Card, CardContent, Fade } from "@mui/material";
+import {
+  Box,
+  Card,
+  CardContent,
+  Fade,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import { Link } from "react-router-dom";
 import SchoolIcon from "@mui/icons-material/School";
 import BuildIcon from "@mui/icons-material/Build";
 import CodeIcon from "@mui/icons-material/Code";
+import ContactMailIcon from "@mui/icons-material/ContactMail";
 
 const portraitStyles = {
   width: 220,
@@ -43,13 +51,10 @@ export default function LandingPage() {
   return (
     <Box
       sx={{
-        // maxHeight: { xs: "100vh", md: "100%" },
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         p: { xs: 2, md: 4 },
-        // mb: { xs: 45, md: 0 },
-        // mt: { xs: 40, md: 4 },
       }}
     >
       <Fade in={show} timeout={500}>
@@ -70,16 +75,43 @@ export default function LandingPage() {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            position: "relative",
           }}
         >
-          {/* Portrait Section */}
+          {/* Contact IconButton */}
+          <IconButton
+            component={Link}
+            to="/contact"
+            sx={{
+              position: "absolute",
+              top: { xs: 8, md: 16 },
+              right: { xs: 8, md: 16 },
+              bgcolor: "rgb(81, 105, 240)",
+              color: "#fff",
+              borderRadius: "999px",
+              boxShadow: 3,
+              zIndex: 10,
+              transition: "transform 0.15s, box-shadow 0.15s, background 0.15s",
+              "&:hover": {
+                bgcolor: "#333",
+                transform: "scale(1.12)",
+                boxShadow: 6,
+              },
+            }}
+            aria-label="Contact Me"
+          >
+            <ContactMailIcon sx={{ fontSize: 38 }} />
+          </IconButton>
+          {/* Header Section */}
           <Box
             sx={{
               display: "flex",
               flexDirection: { xs: "column", md: "row" },
-              gap: { xs: 0, md: 6 },
+              gap: { xs: 0, md: 8 },
+              mb: 4,
             }}
           >
+            {/* Portrait Section */}
             <Fade in={show} timeout={1200}>
               <Box
                 sx={{
@@ -119,16 +151,35 @@ export default function LandingPage() {
                   mb: 2,
                   maxWidth: 500,
                   padding: { xs: 2, md: 0 },
+                  background:
+                    "linear-gradient(90deg, rgba(245,247,250,0.85) 60%, rgba(194,207,226,0.25) 100%)",
+                  borderRadius: 3,
+                  boxShadow: "0 2px 16px 0 rgba(31,38,135,0.06)",
+                  px: { xs: 2, md: 3 },
+                  py: { xs: 1.5, md: 2 },
+                  letterSpacing: 0.1,
+                  lineHeight: 1.7,
                 }}
               >
                 Welcome to my portfolio! I'm a full-stack web developer and
                 recent RIT summa cum laude graduate, passionate about creating
                 intuitive, user-centered solutions with React, Node.js,
-                JavaScript, Java, and Figma. 
+                JavaScript, Java, and Figma.
                 <br />
-                Dive in to explore my projects and
-                see how I blend creativity, technical expertise, and leadership
-                to deliver impactful digital experiences!
+                <span
+                  style={{
+                    display: "inline-block",
+                    marginTop: 12,
+                    fontWeight: 600,
+                    color: "#5169f0",
+                    letterSpacing: 0.2,
+                    fontSize: "1.08em",
+                  }}
+                >
+                  Dive in to explore my projects and see how I blend creativity,
+                  technical expertise, and leadership to deliver impactful
+                  digital experiences!
+                </span>
               </Typography>
             </Fade>
           </Box>
