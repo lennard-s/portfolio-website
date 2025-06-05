@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import {
   AppBar,
+  Box,
   Toolbar,
   Typography,
   Tabs,
@@ -79,7 +80,22 @@ export default function AppBarComponent() {
           to="/"
           onClick={handleLogoClick} // Reset tabs when clicked
         >
-          Lenn's Portfolio
+          <Box
+            component="span"
+            sx={{
+              display: { xs: "inline", md: "none" },
+            }}
+          >
+            Lenn's Portfolio
+          </Box>
+          <Box
+            component="span"
+            sx={{
+              display: { xs: "none", md: "inline" },
+            }}
+          >
+            Lennard's Portfolio
+          </Box>
         </Typography>
 
         {isMobile ? (
@@ -96,6 +112,12 @@ export default function AppBarComponent() {
               anchor="right"
               open={drawerOpen}
               onClose={handleDrawerToggle}
+              sx={{
+                "& .MuiDrawer-paper": {
+                  background: appBarGradient,
+                  color: "white",
+                },
+              }}
             >
               <List>
                 <ListItem
@@ -104,7 +126,12 @@ export default function AppBarComponent() {
                   to="/dev"
                   onClick={handleDrawerToggle}
                 >
-                  <ListItemText primary="Dev" />
+                  <ListItemText
+                    primary="Dev"
+                    slotProps={{
+                      primary: { sx: { color: "rgb(94.1% 91.8% 93.3%)" } },
+                    }}
+                  />
                 </ListItem>
                 <ListItem
                   button
@@ -112,7 +139,12 @@ export default function AppBarComponent() {
                   to="/design"
                   onClick={handleDrawerToggle}
                 >
-                  <ListItemText primary="Design" />
+                  <ListItemText
+                    primary="Design"
+                    slotProps={{
+                      primary: { sx: { color: "rgb(94.1% 91.8% 93.3%)" } },
+                    }}
+                  />
                 </ListItem>
                 <ListItem
                   button
@@ -120,7 +152,12 @@ export default function AppBarComponent() {
                   to="/resume"
                   onClick={handleDrawerToggle}
                 >
-                  <ListItemText primary="Resume" />
+                  <ListItemText
+                    primary="Resume"
+                    slotProps={{
+                      primary: { sx: { color: "rgb(94.1% 91.8% 93.3%)" } },
+                    }}
+                  />
                 </ListItem>
                 <ListItem
                   button
@@ -128,7 +165,12 @@ export default function AppBarComponent() {
                   to="/contact"
                   onClick={handleDrawerToggle}
                 >
-                  <ListItemText primary="Contact" />
+                  <ListItemText
+                    primary="Contact"
+                    slotProps={{
+                      primary: { sx: { color: "rgb(94.1% 91.8% 93.3%)" } },
+                    }}
+                  />
                 </ListItem>
               </List>
             </Drawer>

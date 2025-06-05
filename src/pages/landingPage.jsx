@@ -43,19 +43,20 @@ export default function LandingPage() {
   return (
     <Box
       sx={{
-        maxHeight: { xs: "100vh", md: "100%" },
+        // maxHeight: { xs: "100vh", md: "100%" },
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        pt: { xs: 15, md: 8 },
-        mb: { xs: 20, md: 0 },
+        p: { xs: 2, md: 4 },
+        // mb: { xs: 45, md: 0 },
+        // mt: { xs: 40, md: 4 },
       }}
     >
       <Fade in={show} timeout={500}>
         <Card
           elevation={8}
           sx={{
-            borderRadius: {xs: 0, md: 6},
+            borderRadius: { xs: 0, md: 6 },
             minWidth: { xs: "90vw", md: 900 },
             maxWidth: 1100,
             padding: { xs: 2, md: 4 },
@@ -72,34 +73,65 @@ export default function LandingPage() {
           }}
         >
           {/* Portrait Section */}
-          <Fade in={show} timeout={1200}>
-            <Box
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                marginBottom: 4,
-                transition: "transform 0.4s cubic-bezier(.4,2,.6,1)",
-                "&:hover > div": {
-                  transform: "scale(1.04)",
-                },
-              }}
-            >
-              <Box sx={portraitStyles}>
-                <img
-                  alt="Portrait of Lennard Szyperski"
-                  src="/portrait.jpg"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    display: "block",
-                    borderRadius: 16,
-                  }}
-                />
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: { xs: "column", md: "row" },
+              gap: { xs: 0, md: 6 },
+            }}
+          >
+            <Fade in={show} timeout={1200}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  marginBottom: 4,
+                  transition: "transform 0.4s cubic-bezier(.4,2,.6,1)",
+                  "&:hover > div": {
+                    transform: "scale(1.04)",
+                  },
+                }}
+              >
+                <Box sx={portraitStyles}>
+                  <img
+                    alt="Portrait of Lennard Szyperski"
+                    src="/portrait.jpg"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                      display: "block",
+                      borderRadius: 16,
+                    }}
+                  />
+                </Box>
               </Box>
-            </Box>
-          </Fade>
+            </Fade>
+            <Fade in={show} timeout={2500}>
+              <Typography
+                variant="h6"
+                sx={{
+                  fontWeight: "bold",
+                  textAlign: "left",
+                  alignSelf: "center",
+                  color: "rgb(16.1% 20% 32.2%)",
+                  mb: 2,
+                  maxWidth: 500,
+                  padding: { xs: 2, md: 0 },
+                }}
+              >
+                Welcome to my portfolio! I'm a full-stack web developer and
+                recent RIT summa cum laude graduate, passionate about creating
+                intuitive, user-centered solutions with React, Node.js,
+                JavaScript, Java, and Figma. 
+                <br />
+                Dive in to explore my projects and
+                see how I blend creativity, technical expertise, and leadership
+                to deliver impactful digital experiences!
+              </Typography>
+            </Fade>
+          </Box>
 
           {/* Introduction Section */}
           <CardContent
@@ -239,13 +271,22 @@ export default function LandingPage() {
               >
                 Toolkit
               </Typography>
-              <Typography variant="body1" sx={{ color: "#555", fontSize: "1.1rem" }}>
+              <Typography
+                variant="body1"
+                sx={{ color: "#555", fontSize: "1.1rem" }}
+              >
                 React, JavaScript, MySQL
               </Typography>
-              <Typography variant="body1" sx={{ color: "#555", fontSize: "1.1rem" }}>
+              <Typography
+                variant="body1"
+                sx={{ color: "#555", fontSize: "1.1rem" }}
+              >
                 Node.js, Figma, Git
               </Typography>
-              <Typography variant="body1" sx={{ color: "#555", fontSize: "1.1rem" }}>
+              <Typography
+                variant="body1"
+                sx={{ color: "#555", fontSize: "1.1rem" }}
+              >
                 Material-UI, Java
               </Typography>
             </Box>
