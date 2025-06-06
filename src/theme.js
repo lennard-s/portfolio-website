@@ -79,7 +79,7 @@ const theme = createTheme({
           WebkitTextFillColor: "transparent",
           backgroundClip: "text",
           transition: "color 0.2s, font-weight 0.2s",
-          textTransform: "none",
+          // textTransform: "none",
           padding: "12px 24px",
         },
         selected: {

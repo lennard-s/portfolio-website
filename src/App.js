@@ -29,7 +29,7 @@ function App() {
             component="main"
             sx={{
               flex: 1, // Fills space between AppBar and BottomBar
-              overflow: "auto", // Allows scrolling for long content
+              overflow: "hidden", // Allows scrolling for long content
               pb: { xs: 6, md: 0 }, // Prevents BottomBar overlap on mobile
             }}
           >

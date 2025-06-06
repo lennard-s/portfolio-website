@@ -43,7 +43,7 @@ const projects = [
 
 const settings = {
   dots: true,
-  adaptiveHeight: true,
+  adaptiveHeight: false,
   infinite: true,
   centerMode: true,
   centerPadding: "5px",
@@ -73,11 +73,12 @@ export default function DevPage() {
     <Fade in={show} timeout={500}>
       <Box
         sx={{
-          minHeight: "100vh",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          padding: 4,
+          height: {xs: "80vh", md: "90vh"},
+          px: 4,
+          overflow: "hidden",
         }}
       >
         <Typography
@@ -85,13 +86,14 @@ export default function DevPage() {
           sx={{
             fontWeight: "bold",
             color: "#333",
-            marginBottom: 4,
+            mb: { xs: 0, md: 2 },
             textAlign: "center",
+            pt: 2,
           }}
         >
-          Development Projects
+          Dev Projects
         </Typography>
-        <Box sx={{ width: "100%", maxWidth: 900 }}>
+        <Box sx={{ width: "100%", maxWidth: 900, height: "80vh" }}>
           <Slider {...settings}>
             {projects.map((project, idx) => (
               <DevCard key={idx} {...project} />

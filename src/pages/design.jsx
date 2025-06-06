@@ -155,7 +155,6 @@ export default function DesignPage() {
                 borderRadius: 1,
                 borderBottom: isMobile ? 1 : 0,
                 borderRight: isMobile ? 0 : 1,
-                borderRadius: 1,
                 borderColor: "divider",
                 "& .MuiTabs-indicator": {
                   height: "2px",
