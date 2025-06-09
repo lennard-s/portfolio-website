@@ -11,8 +11,8 @@ const projects = [
     description:
       "A club management web application built with React, Node.js, and MySQL.",
     videoUrl: [
-      "https://www.youtube.com/embed/example1",
-      "https://www.youtube.com/embed/example2",
+      "https://www.youtube.com/embed/gozmpK-ZJh4?si=05lcypgUkEibtdDB",
+      "https://www.youtube.com/embed/D_CQ0duqVxI?si=4QK1lMSwoyH7uC_q",
     ],
     repoUrl: "https://github.com/lennard-s/DIO",
     objectives:

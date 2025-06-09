@@ -5,11 +5,8 @@ import {
   Paper,
   IconButton,
   Divider,
-  useTheme,
-  useMediaQuery,
   Fade,
 } from "@mui/material";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 export default function DevCard({
@@ -23,9 +20,6 @@ export default function DevCard({
 }) {
   const isMultiVideo = Array.isArray(videoUrl);
   const [currentVideo, setCurrentVideo] = useState(isMultiVideo ? 0 : null);
-
-  const theme = useTheme();
-  const isXs = useMediaQuery(theme.breakpoints.only("xs"));
 
   const [showFade, setShowFade] = useState(false);
 
@@ -64,11 +58,7 @@ export default function DevCard({
             <Typography variant="h5" align="left" sx={{ color: "#333" }}>
               {title}
             </Typography>
-            <Typography
-              variant="body1"
-              align="left"
-              sx={{ color: "#555" }}
-            >
+            <Typography variant="body1" align="left" sx={{ color: "#555" }}>
               {description}
             </Typography>
           </Box>
@@ -123,35 +113,53 @@ export default function DevCard({
                   {videoUrl.map((vid, idx) => (
                     <Box
                       key={idx}
-                      onClick={() => setCurrentVideo(idx)}
                       sx={{
-                        width: 60,
-                        height: 34,
-                        borderRadius: 2,
-                        overflow: "hidden",
-                        border:
-                          currentVideo === idx
-                            ? "2px solid #3f4e7c"
-                            : "1px solid #ccc",
-                        cursor: "pointer",
-                        opacity: currentVideo === idx ? 1 : 0.7,
-                        transition: "border 0.2s, opacity 0.2s",
-                        background: "#fff",
-                        boxShadow: currentVideo === idx ? 3 : 1,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
                       }}
                     >
-                      <iframe
-                        src={vid}
-                        style={{
-                          pointerEvents: "none",
-                          width: "100%",
-                          height: "100%",
-                          border: "none",
+                      <Box
+                        onClick={() => setCurrentVideo(idx)}
+                        sx={{
+                          width: 60,
+                          height: 34,
                           borderRadius: 2,
-                          background: "#000",
+                          overflow: "hidden",
+                          border:
+                            currentVideo === idx
+                              ? "2px solid #3f4e7c"
+                              : "1px solid #ccc",
+                          cursor: "pointer",
+                          opacity: currentVideo === idx ? 1 : 0.7,
+                          transition: "border 0.2s, opacity 0.2s",
+                          background: "#fff",
+                          boxShadow: currentVideo === idx ? 3 : 1,
                         }}
-                        title={`Video ${idx + 1}`}
-                      />
+                      >
+                        <iframe
+                          src={vid}
+                          style={{
+                            pointerEvents: "none",
+                            width: "100%",
+                            height: "100%",
+                            border: "none",
+                            borderRadius: 2,
+                            background: "#000",
+                          }}
+                          title={`Video ${idx + 1}`}
+                        />
+                      </Box>
+                      <Typography
+                        variant="caption"
+                        sx={{ mt: 0.5, color: "#666" }}
+                      >
+                        {idx === 0
+                          ? "Overview"
+                          : idx === 1
+                          ? "Demonstration"
+                          : `Video ${idx + 1}`}
+                      </Typography>
                     </Box>
                   ))}
                 </Box>
@@ -237,9 +245,9 @@ export default function DevCard({
               width: { xs: "100%", sm: "auto" },
               overflowX: { xs: "auto", sm: "visible" },
             }}
-            onPointerDown={e => e.stopPropagation()}
-            onTouchStart={e => e.stopPropagation()}
-            onMouseDown={e => e.stopPropagation()}
+            onPointerDown={(e) => e.stopPropagation()}
+            onTouchStart={(e) => e.stopPropagation()}
+            onMouseDown={(e) => e.stopPropagation()}
           >
             {Array.isArray(techStack) && techStack.length > 0 && (
               <Box
@@ -247,7 +255,7 @@ export default function DevCard({
                   display: "flex",
                   flexWrap: { xs: "nowrap", sm: "wrap" },
                   gap: 1,
-                  pb: { xs: 0.5, sm: 0 }, 
+                  pb: { xs: 0.5, sm: 0 },
                 }}
               >
                 {techStack.map((tech, idx) => (
