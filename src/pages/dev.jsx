@@ -11,8 +11,8 @@ const projects = [
     description:
       "A club management web application built with React, Node.js, and MySQL.",
     videoUrl: [
-      "https://www.youtube.com/embed/gozmpK-ZJh4?si=05lcypgUkEibtdDB",
-      "https://www.youtube.com/embed/D_CQ0duqVxI?si=4QK1lMSwoyH7uC_q",
+      "https://www.youtube.com/embed/gozmpK-ZJh4?enablejsapi=1&si=05lcypgUkEibtdDB",
+      "https://www.youtube.com/embed/D_CQ0duqVxI?enablejsapi=1&si=4QK1lMSwoyH7uC_q",
     ],
     repoUrl: "https://github.com/lennard-s/DIO",
     objectives:
@@ -24,18 +24,22 @@ const projects = [
   {
     title: "Mobile App",
     description:
-      "A cross-platform mobile app developed using Flutter for tracking fitness goals and progress.",
-    videoUrl: "https://www.youtube.com/embed/example2",
+      "A iOS app for tracking personal rock climbing reviews, built with Swift.",
+    videoUrl: "https://www.youtube.com/embed/bz4Lu-F3-9M?si=B14oBo0B7ClRifmX",
+    repoUrl: "https://github.com/lennard-s/iOS-App",
+    objectives:
+      "Create a user-friendly mobile application that allows users to add and manage personal reviews for outdoor rock climbs.",
+    learningOutcomes: "iOS development, mobile app design, user experience",
     techStack: ["Swift"],
   },
   {
     title: "Rush Hour Game",
     description: "A Java implementation of the game 'Rush Hour'.",
-    videoUrl: "https://www.youtube.com/embed/example3",
+    videoUrl: "https://www.youtube.com/embed/LNWNootcsU8?si=M891mWMmTUBV40XJ",
     repoUrl: "https://github.com/lennard-s/RushHour_Java",
     techStack: ["Java", "JavaFX"],
     objectives:
-      "Create a playable version of the game 'Rush Hour' with a focus on object-oriented design, CLI development, and algorithm implementation.",
+      "Create a playable version of the game 'Rush Hour' with a focus on object-oriented programming, CLI development, and algorithm implementation.",
     learningOutcomes:
       "Object-oriented programming, JavaFX, user interface design, team programming.",
   },
@@ -76,7 +80,7 @@ export default function DevPage() {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          height: {xs: "80vh", md: "90vh"},
+          height: { xs: "80vh", md: "90vh" },
           px: 4,
           overflow: "hidden",
         }}
