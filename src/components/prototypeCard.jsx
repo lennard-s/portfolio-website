@@ -5,11 +5,9 @@ import {
   ToggleButtonGroup,
   Typography,
   Paper,
-  IconButton,
-  Tooltip,
+  Divider,
   Fade,
 } from "@mui/material";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
 export default function PrototypeCard({
   title,
@@ -20,20 +18,17 @@ export default function PrototypeCard({
   learningOutcomes,
   skillsApplied,
 }) {
-  const [mediaTab, setMediaTab] = useState(1);
-  const [showDetails, setShowDetails] = useState(false); // Toggle for "Read More" content
-
-  const handleMediaTabChange = (event, newValue) => {
-    if (newValue !== null) setMediaTab(newValue);
-  };
-
   const hasBothMedia = figmaEmbedCode && youtubeEmbedCode;
-
+  const [mediaTab, setMediaTab] = useState(hasBothMedia ? 0 : 0);
   const [showFade, setShowFade] = useState(false);
 
   useEffect(() => {
     setShowFade(true);
   }, []);
+
+  const handleMediaTabChange = (event, newValue) => {
+    if (newValue !== null) setMediaTab(newValue);
+  };
 
   return (
     <Fade in={showFade} timeout={500}>
@@ -41,202 +36,176 @@ export default function PrototypeCard({
         sx={{
           p: 2,
           m: 1,
-          position: "relative",
+          display: "flex",
+          flexDirection: "column",
+          height: { xs: "70vh", sm: "70vh", md: "75vh" },
+          maxHeight: { xs: "65vh", sm: "70vh", md: "75vh" },
+          minHeight: { xs: "60vh", sm: "50vh", md: "55vh" },
+          overflow: "hidden",
         }}
       >
-        {/* Read More Button */}
-        <Tooltip title={showDetails ? "Hide details" : "Show details"}>
-          <IconButton
-            size="large"
-            sx={{ position: "absolute", top: 8, right: 8 }}
-            onClick={() => setShowDetails(!showDetails)}
-            aria-label={showDetails ? "Hide details" : "Show details"}
-          >
-            <InfoOutlinedIcon />
-          </IconButton>
-        </Tooltip>
-        <Typography variant="h5" align="left" sx={{ color: "#333" }}>
-          {title}
-        </Typography>
-        <Typography variant="body1" align="left" sx={{ mb: 2, color: "#555" }}>
-          {description}
-        </Typography>
-
-        {/* Content Box */}
+        {/* Top Row */}
         <Box
           sx={{
-            position: "relative",
-            width: "100%",
-            paddingBottom: "56.25%",
+            flex: "0 0 auto",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
             mb: 1,
           }}
         >
-          {!showDetails && (
-            <>
-              {(!hasBothMedia || mediaTab === 0) && figmaEmbedCode && (
-                <iframe
-                  src={figmaEmbedCode}
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                  }}
-                  allowFullScreen
-                  frameBorder="0"
-                  title={title}
-                />
-              )}
-              {hasBothMedia && mediaTab === 1 && youtubeEmbedCode && (
-                <iframe
-                  src={youtubeEmbedCode}
-                  style={{
-                    position: "absolute",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                  }}
-                  allowFullScreen
-                  frameBorder="0"
-                  title={title}
-                />
-              )}
-            </>
-          )}
-          {/* More Details Section */}
-          {showDetails && (
-            <Box
-              sx={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-                overflowY: "auto",
-                p: 2,
-                display: "flex",
-                flexDirection: "column",
-                gap: 2,
-                background: "transparent",
-              }}
-            >
-              <Paper elevation={1} sx={{ p: 2 }}>
-                <Typography variant="h6" sx={{ mb: 1 }}>
-                  Objectives
-                </Typography>
-                <Typography variant="body2">{objectives}</Typography>
-              </Paper>
-              <Paper elevation={1} sx={{ p: 2 }}>
-                <Typography variant="h6" sx={{ mb: 1 }}>
-                  Learning Outcomes
-                </Typography>
-                <Typography variant="body2">{learningOutcomes}</Typography>
-              </Paper>
-              <Paper elevation={1} sx={{ p: 2 }}>
-                <Typography variant="h6" sx={{ mb: 1 }}>
-                  Skills Applied
-                </Typography>
-                <Typography variant="body2">{skillsApplied}</Typography>
-              </Paper>
+          <Box>
+            <Typography variant="h5" align="left" sx={{ color: "#333" }}>
+              {title}
+            </Typography>
+            <Typography variant="body1" align="left" sx={{ color: "#555" }}>
+              {description}
+            </Typography>
+          </Box>
+        </Box>
+
+        {/* Content Section */}
+        <Box
+          sx={{
+            flex: "1 1 0",
+            overflowY: "auto",
+            width: "100%",
+            my: 1,
+            minHeight: 0,
+          }}
+        >
+          {/* Media */}
+          {(figmaEmbedCode || youtubeEmbedCode) && (
+            <Box sx={{ width: "100%" }}>
+              <Box
+                sx={{
+                  position: "relative",
+                  paddingBottom: "56.25%",
+                  height: 0,
+                }}
+              >
+                {(!hasBothMedia || mediaTab === 0) && figmaEmbedCode && (
+                  <iframe
+                    src={figmaEmbedCode}
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      width: "100%",
+                      height: "100%",
+                      border: "none",
+                      borderRadius: 8,
+                      background: "#000",
+                    }}
+                    allowFullScreen
+                    title={title}
+                  />
+                )}
+                {hasBothMedia && mediaTab === 1 && youtubeEmbedCode && (
+                  <iframe
+                    src={youtubeEmbedCode}
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      width: "100%",
+                      height: "100%",
+                      border: "none",
+                      borderRadius: 8,
+                      background: "#000",
+                    }}
+                    allowFullScreen
+                    title={title}
+                  />
+                )}
+              </Box>
             </Box>
           )}
-        </Box>
-        {/* Option to hide the toggles if both media aren't present */}
-        {/* {hasBothMedia && ( */}
-        <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-          <ToggleButtonGroup
-            value={mediaTab}
-            exclusive
-            onChange={handleMediaTabChange}
-            size="small"
+
+          {/* details section */}
+          <Box
             sx={{
-              background: "transparent",
-              boxShadow: "none",
-              borderRadius: "999px",
-              overflow: "hidden",
+              p: 2,
+              bgcolor: "background.paper",
+              borderRadius: 1,
+              mt: 1,
             }}
           >
-            <ToggleButton
-              value={0}
-              sx={{
-                textTransform: "none",
-                background:
-                  mediaTab === 0
-                    ? "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))"
-                    : "#24292f",
-                color: "#fff",
-                borderRadius: "999px",
-                fontWeight: 600,
-                px: 2,
-                py: 1,
-                minWidth: 0,
-                transition:
-                  "transform 0.15s, box-shadow 0.15s, background 0.15s",
-                "&:hover": {
-                  background:
-                    mediaTab === 0
-                      ? "#24292f"
-                      : "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
-                  boxShadow: 4,
-                },
-                "&.Mui-selected": {
-                  background:
-                    "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
-                  color: "#fff",
-                },
-                "&:active": {
-                  background:
-                    mediaTab === 0
-                      ? "#24292f"
-                      : "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
-                },
-              }}
-            >
-              Figma Prototype
-            </ToggleButton>
-            <ToggleButton
-              value={1}
-              sx={{
-                textTransform: "none",
-                background:
-                  mediaTab === 1
-                    ? "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))"
-                    : "#24292f",
-                color: "#fff",
-                borderRadius: "999px",
-                fontWeight: 600,
-                px: 2,
-                py: 1,
-                minWidth: 0,
-                transition:
-                  "transform 0.15s, box-shadow 0.15s, background 0.15s",
-                "&:hover": {
-                  background:
-                    mediaTab === 1
-                      ? "#24292f"
-                      : "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
-                  boxShadow: 4,
-                },
-                "&.Mui-selected": {
-                  background:
-                    "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
-                  color: "#fff",
-                },
-                "&:active": {
-                  background:
-                    mediaTab === 1
-                      ? "#24292f"
-                      : "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
-                },
-              }}
-            >
-              YouTube Video
-            </ToggleButton>
-          </ToggleButtonGroup>
+            <Typography variant="h6" sx={{ fontWeight: 700 }}>
+              Objectives
+            </Typography>
+            <Typography variant="body2" sx={{ mb: 2 }}>
+              {objectives}
+            </Typography>
+            <Divider />
+            <Typography variant="h6" sx={{ fontWeight: 700, mt: 2 }}>
+              Learning Outcomes
+            </Typography>
+            <Typography variant="body2" sx={{ mb: 2 }}>
+              {learningOutcomes}
+            </Typography>
+            <Divider />
+            <Typography variant="h6" sx={{ fontWeight: 700, mt: 2 }}>
+              Skills Applied
+            </Typography>
+            <Typography variant="body2">{skillsApplied}</Typography>
+          </Box>
         </Box>
-        {/* )} */}
+
+        {hasBothMedia && (
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "center",
+              mt: 1,
+              mb: 0.5,
+            }}
+          >
+            <ToggleButtonGroup
+              value={mediaTab}
+              exclusive
+              onChange={handleMediaTabChange}
+              size="small"
+              sx={{
+                background: "#24292f",
+                borderRadius: "999px",
+                overflow: "hidden",
+                minHeight: 28,
+                "& .MuiToggleButton-root": {
+                  px: 1,
+                  py: 0.1,
+                  fontSize: "0.72rem",
+                  minWidth: 0,
+                  border: "none",
+                  borderRadius: 0,
+                  color: "#fff",
+                  fontWeight: 600,
+                  "&:first-of-type": {
+                    borderTopLeftRadius: "999px",
+                    borderBottomLeftRadius: "999px",
+                  },
+                  "&:last-of-type": {
+                    borderTopRightRadius: "999px",
+                    borderBottomRightRadius: "999px",
+                  },
+                  "&.Mui-selected": {
+                    background:
+                      "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
+                    color: "#fff",
+                  },
+                  "&:not(:last-of-type)": {
+                    borderRight: "1px solid #444",
+                  },
+                },
+              }}
+            >
+              <ToggleButton value={0}>Figma</ToggleButton>
+              <ToggleButton value={1}>Video</ToggleButton>
+            </ToggleButtonGroup>
+          </Box>
+        )}
       </Paper>
     </Fade>
   );

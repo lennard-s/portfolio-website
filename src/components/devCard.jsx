@@ -1,16 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import {
   Box,
-  Button,
   Typography,
   Paper,
   IconButton,
-  Tooltip,
   Divider,
   useTheme,
   useMediaQuery,
   Fade,
-  Collapse,
 } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -22,9 +19,8 @@ export default function DevCard({
   repoUrl,
   objectives,
   learningOutcomes,
-  techStack, // expects an array of strings
+  techStack,
 }) {
-  const [showDetails, setShowDetails] = useState(false);
   const isMultiVideo = Array.isArray(videoUrl);
   const [currentVideo, setCurrentVideo] = useState(isMultiVideo ? 0 : null);
 
@@ -39,16 +35,6 @@ export default function DevCard({
 
   const contentRef = useRef(null);
 
-  useEffect(() => {
-    if (showDetails && contentRef.current) {
-      // Scroll to bottom smoothly
-      contentRef.current.scrollTo({
-        top: contentRef.current.scrollHeight,
-        behavior: "smooth",
-      });
-    }
-  }, [showDetails]);
-
   return (
     <Fade in={showFade} timeout={500}>
       <Paper
@@ -57,9 +43,9 @@ export default function DevCard({
           m: 1,
           display: "flex",
           flexDirection: "column",
-          height: { xs: "70vh", sm: "70vh", md: "75vh" }, // Responsive height
-          maxHeight: { xs: "70vh", sm: "70vh", md: "75vh" },
-          minHeight: { xs: "50vh", sm: "50vh", md: "55vh" },
+          height: { xs: "70vh", sm: "70vh", md: "75vh" },
+          maxHeight: { xs: "80vh", sm: "70vh", md: "75vh" },
+          minHeight: { xs: "60vh", sm: "50vh", md: "55vh" },
           overflow: "hidden",
         }}
       >
@@ -81,80 +67,11 @@ export default function DevCard({
             <Typography
               variant="body1"
               align="left"
-              sx={{ mb: 2, color: "#555" }}
+              sx={{ color: "#555" }}
             >
               {description}
             </Typography>
           </Box>
-          <Tooltip title={showDetails ? "Hide details" : "Show More details"}>
-            {isXs ? (
-              <IconButton
-                onClick={() => setShowDetails(!showDetails)}
-                color="inherit"
-                sx={{
-                  background: showDetails
-                    ? "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))"
-                    : "#24292f",
-                  color: "#fff",
-                  borderRadius: "999px",
-                  transition:
-                    "transform 0.15s, box-shadow 0.15s, background 0.15s",
-                  "&:hover": {
-                    background: showDetails
-                      ? "#24292f"
-                      : "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
-                    boxShadow: 4,
-                    transform: "scale(1.07)",
-                  },
-                  "&:active": {
-                    background: showDetails
-                      ? "#24292f"
-                      : "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
-                  },
-                  userSelect: "none",
-                  minWidth: 0,
-                }}
-                aria-label={showDetails ? "Hide details" : "Show details"}
-                size="small"
-              >
-                <InfoOutlinedIcon />
-              </IconButton>
-            ) : (
-              <Button
-                onClick={() => setShowDetails(!showDetails)}
-                variant="contained"
-                color="inherit"
-                startIcon={<InfoOutlinedIcon />}
-                size="large"
-                sx={{
-                  background: showDetails
-                    ? "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))"
-                    : "#24292f",
-                  color: "#fff",
-                  borderRadius: "999px",
-                  transition:
-                    "transform 0.15s, box-shadow 0.15s, background 0.15s",
-                  "&:hover": {
-                    background: showDetails
-                      ? "#24292f"
-                      : "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
-                    boxShadow: 4,
-                    transform: "scale(1.07)",
-                  },
-                  "&:active": {
-                    background: showDetails
-                      ? "#24292f"
-                      : "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
-                  },
-                  userSelect: "none",
-                  minWidth: 0,
-                }}
-                aria-label={showDetails ? "Hide details" : "Show details"}
-              >
-                {showDetails ? "Hide Info" : "Show Info"}
-              </Button>
-            )}
-          </Tooltip>
         </Box>
 
         {/* Content Section */}
@@ -164,8 +81,8 @@ export default function DevCard({
             flex: "1 1 0",
             overflowY: "auto",
             width: "100%",
-            mb: 1,
-            minHeight: 0, // Required for flexbox scroll
+            my: 1,
+            minHeight: 0,
           }}
         >
           {videoUrl && (
@@ -241,77 +158,66 @@ export default function DevCard({
               )}
             </Box>
           )}
-          <Collapse
-            in={showDetails}
-            onEntered={() => {
-              if (contentRef.current) {
-                contentRef.current.scrollTo({
-                  top: contentRef.current.scrollHeight,
-                  behavior: "smooth",
-                });
-              }
+          {/* Always visible details section */}
+          <Box
+            sx={{
+              p: 2,
+              bgcolor: "background.paper",
+              borderRadius: 1,
+              mt: 1,
             }}
           >
-            <Box
-              sx={{
-                p: 2,
-                bgcolor: "background.paper",
-                borderRadius: 1,
-                mt: 1,
-              }}
-            >
-              <Typography variant="h6" sx={{ fontWeight: 700 }}>
-                Objectives
-              </Typography>
-              <Typography variant="body2" sx={{ mb: 2 }}>
-                {objectives}
-              </Typography>
-              <Divider />
-              <Typography variant="h6" sx={{ fontWeight: 700, mt: 2 }}>
-                Learning Outcomes
-              </Typography>
-              <Typography variant="body2" sx={{ mb: 2 }}>
-                {learningOutcomes}
-              </Typography>
-              <Divider />
-              {repoUrl && (
-                <Box
+            <Typography variant="h6" sx={{ fontWeight: 700 }}>
+              Objectives
+            </Typography>
+            <Typography variant="body2" sx={{ mb: 2 }}>
+              {objectives}
+            </Typography>
+            <Divider />
+            <Typography variant="h6" sx={{ fontWeight: 700, mt: 2 }}>
+              Learning Outcomes
+            </Typography>
+            <Typography variant="body2" sx={{ mb: 2 }}>
+              {learningOutcomes}
+            </Typography>
+            <Divider />
+            {repoUrl && (
+              <Box
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 1,
+                  mt: 2,
+                }}
+              >
+                <IconButton
+                  component="a"
+                  href={repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Repository"
+                  size="small"
+                  sx={{ color: "#333" }}
+                >
+                  <GitHubIcon />
+                </IconButton>
+                <Typography
+                  variant="body2"
+                  component="a"
+                  href={repoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 1,
-                    mt: 2,
+                    color: "#3f4e7c",
+                    textDecoration: "underline",
+                    wordBreak: "break-all",
                   }}
                 >
-                  <IconButton
-                    component="a"
-                    href={repoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Repository"
-                    size="small"
-                    sx={{ color: "#333" }}
-                  >
-                    <GitHubIcon />
-                  </IconButton>
-                  <Typography
-                    variant="body2"
-                    component="a"
-                    href={repoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    sx={{
-                      color: "#3f4e7c",
-                      textDecoration: "underline",
-                      wordBreak: "break-all",
-                    }}
-                  >
-                    {repoUrl}
-                  </Typography>
-                </Box>
-              )}
-            </Box>
-          </Collapse>
+                  {repoUrl}
+                </Typography>
+              </Box>
+            )}
+          </Box>
         </Box>
 
         {/* Bottom Row */}
@@ -322,7 +228,7 @@ export default function DevCard({
             flexDirection: { xs: "column", sm: "row" },
             justifyContent: { xs: "flex-start", sm: "space-between" },
             alignItems: { xs: "stretch", sm: "center" },
-            mt: 2,
+            mt: 1,
             gap: { xs: 1, sm: 0 },
           }}
         >
@@ -331,31 +237,36 @@ export default function DevCard({
               width: { xs: "100%", sm: "auto" },
               overflowX: { xs: "auto", sm: "visible" },
             }}
+            onPointerDown={e => e.stopPropagation()}
+            onTouchStart={e => e.stopPropagation()}
+            onMouseDown={e => e.stopPropagation()}
           >
             {Array.isArray(techStack) && techStack.length > 0 && (
               <Box
                 sx={{
                   display: "flex",
-                  flexWrap: "wrap",
+                  flexWrap: { xs: "nowrap", sm: "wrap" },
                   gap: 1,
+                  pb: { xs: 0.5, sm: 0 }, 
                 }}
               >
                 {techStack.map((tech, idx) => (
                   <Box
                     key={idx}
                     sx={{
-                      px: 1.2,
-                      py: 0.4,
+                      px: { xs: 1, sm: 1.2 },
+                      py: { xs: 0.3, sm: 0.4 },
                       borderRadius: "12px",
                       bgcolor: "#f0f4f8",
                       color: "#3f4e7c",
-                      fontSize: { xs: "0.85rem", sm: "0.95rem" },
+                      fontSize: { xs: "0.8rem", sm: "0.95rem" },
                       fontWeight: 500,
                       border: "1px solid #e0e0e0",
                       letterSpacing: 0.2,
                       userSelect: "none",
                       whiteSpace: "nowrap",
                       minWidth: 0,
+                      flex: "0 0 auto", // prevent shrinking
                     }}
                   >
                     {tech}
@@ -369,7 +280,7 @@ export default function DevCard({
               display: "flex",
               justifyContent: { xs: "flex-end", sm: "flex-end" },
               alignItems: "center",
-              mt: { xs: 1, sm: 0 },
+              mt: { xs: 0, sm: 0 },
             }}
           >
             {repoUrl && (

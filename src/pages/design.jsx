@@ -103,7 +103,8 @@ export default function DesignPage() {
   const [selectedTab, setSelectedTab] = useState(0);
   const [show, setShow] = React.useState(false);
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down("md"));
+  const isMobile = useMediaQuery(theme.breakpoints.down("md")); // true for < md
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));     // true for >= md
 
   React.useEffect(() => {
     setShow(true);
@@ -124,60 +125,61 @@ export default function DesignPage() {
           p: 2,
         }}
       >
-        {/* Tabs Section */}
-        <Box sx={{ width: { xs: "90%", md: "fit-content" }, mr: 10 }}>
-          <Paper
-            sx={{
-              position: { xs: "fixed", md: "sticky" },
-              top: { xs: "unset", md: 180 }, // Fixed at top on mobile, sticky on desktop
-              bottom: { xs: 0, md: "unset" },
-              width: "fit-content",
-              mb: { xs: 2, md: 0 },
-              alignSelf: { xs: "center", md: "flex-start" },
-              borderRadius: 1,
-              background: "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
-            }}
-          >
-            <Tabs
-              value={selectedTab}
-              onChange={handleTabChange}
-              orientation={isMobile ? "horizontal" : "vertical"}
-              variant="scrollable"
-              indicatorColor="primary"
-              textColor="inherit"
+        {/* Sidebar Tabs for md+ */}
+        {isMdUp && (
+          <Box sx={{ width: { xs: "90%", md: "fit-content" }, mr: 10 }}>
+            <Paper
               sx={{
                 position: { xs: "fixed", md: "sticky" },
-                top: { xs: "unset", md: 180 }, // Fixed at top on mobile, sticky on desktop
+                top: { xs: "unset", md: 180 },
                 bottom: { xs: 0, md: "unset" },
                 width: "fit-content",
                 mb: { xs: 2, md: 0 },
                 alignSelf: { xs: "center", md: "flex-start" },
                 borderRadius: 1,
-                borderBottom: isMobile ? 1 : 0,
-                borderRight: isMobile ? 0 : 1,
-                borderColor: "divider",
-                "& .MuiTabs-indicator": {
-                  height: "2px",
-                  borderRadius: "0px",
-                  background:
-                    "linear-gradient(var(--angle), rgb(96.9% 71.8% 63.9%), rgb(92.2% 72.9% 72.5%), rgb(94.9% 84.7% 84.7%), rgb(94.1% 91.8% 83.9%))",
-                },
+                background:
+                  "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
               }}
-              centered={isMobile}
             >
-              <Tab label="Prototyping" />
-              <Tab label="Graphic Design" />
-              <Tab label="Illustration" />
-            </Tabs>
-          </Paper>
-        </Box>
+              <Tabs
+                value={selectedTab}
+                onChange={handleTabChange}
+                orientation="vertical"
+                variant="scrollable"
+                indicatorColor="primary"
+                textColor="inherit"
+                sx={{
+                  position: { xs: "fixed", md: "sticky" },
+                  top: { xs: "unset", md: 180 },
+                  bottom: { xs: 0, md: "unset" },
+                  width: "fit-content",
+                  mb: { xs: 2, md: 0 },
+                  alignSelf: { xs: "center", md: "flex-start" },
+                  borderRadius: 1,
+                  borderRight: 1,
+                  borderColor: "divider",
+                  "& .MuiTabs-indicator": {
+                    height: "2px",
+                    borderRadius: "0px",
+                    background:
+                      "linear-gradient(var(--angle), rgb(96.9% 71.8% 63.9%), rgb(92.2% 72.9% 72.5%), rgb(94.9% 84.7% 84.7%), rgb(94.1% 91.8% 83.9%))",
+                  },
+                }}
+                centered={false}
+              >
+                <Tab label="Prototyping" />
+                <Tab label="Graphic Design" />
+                <Tab label="Illustration" />
+              </Tabs>
+            </Paper>
+          </Box>
+        )}
 
         {/* Main Content Section */}
         <Box
           sx={{
             maxWidth: { xs: "90%", md: "60%" },
             height: "80vh",
-            pt: { xs: 2, md: 0 }, // Padding top on mobile to account for fixed tabs
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-start",
@@ -195,6 +197,43 @@ export default function DesignPage() {
           >
             Design Work
           </Typography>
+
+          {/* Tabs row for screens below md */}
+          {isMobile && (
+            <Paper
+              sx={{
+                mb: 0,
+                borderRadius: 1,
+                background:
+                  "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
+              }}
+            >
+              <Tabs
+                value={selectedTab}
+                onChange={handleTabChange}
+                orientation="horizontal"
+                variant="scrollable"
+                indicatorColor="primary"
+                textColor="inherit"
+                sx={{
+                  borderBottom: 1,
+                  borderColor: "divider",
+                  "& .MuiTabs-indicator": {
+                    height: "2px",
+                    borderRadius: "0px",
+                    background:
+                      "linear-gradient(var(--angle), rgb(96.9% 71.8% 63.9%), rgb(92.2% 72.9% 72.5%), rgb(94.9% 84.7% 84.7%), rgb(94.1% 91.8% 83.9%))",
+                  },
+                }}
+                centered
+              >
+                <Tab label="Prototyping" />
+                <Tab label="Graphic Design" />
+                <Tab label="Illustration" />
+              </Tabs>
+            </Paper>
+          )}
+
           {selectedTab === 0 && (
             <Slider {...settings}>
               {prototypes.map((proto, index) => (
