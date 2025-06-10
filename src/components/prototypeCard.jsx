@@ -1,13 +1,24 @@
 import React, { useState, useEffect } from "react";
 import {
   Box,
-  ToggleButton,
-  ToggleButtonGroup,
   Typography,
   Paper,
   Divider,
   Fade,
+  Button,
 } from "@mui/material";
+
+
+function FigmaIcon(props) {
+  return (
+    <img
+      src="https://res.cloudinary.com/dcuh2fjgt/image/upload/v1749590600/figma_susjht.svg"
+      alt="Figma"
+      style={{ width: 35, height: 35, display: "inline-block", verticalAlign: "middle" }}
+      {...props}
+    />
+  );
+}
 
 export default function PrototypeCard({
   title,
@@ -18,16 +29,27 @@ export default function PrototypeCard({
   learningOutcomes,
   skillsApplied,
 }) {
-  const hasBothMedia = figmaEmbedCode && youtubeEmbedCode;
-  const [mediaTab, setMediaTab] = useState(hasBothMedia ? 0 : 0);
   const [showFade, setShowFade] = useState(false);
 
   useEffect(() => {
     setShowFade(true);
   }, []);
 
-  const handleMediaTabChange = (event, newValue) => {
-    if (newValue !== null) setMediaTab(newValue);
+  // Helper to get Figma share link from embed code
+  const getFigmaShareUrl = (embedUrl) => {
+    if (!embedUrl) return null;
+    try {
+      const url = new URL(embedUrl);
+      if (url.hostname === "embed.figma.com") {
+        const protoUrl = url.searchParams.get("proto");
+        if (protoUrl) return protoUrl;
+        // fallback: convert embed.figma.com/proto/xxx to figma.com/proto/xxx
+        return embedUrl.replace("embed.figma.com", "figma.com");
+      }
+      return embedUrl;
+    } catch {
+      return embedUrl;
+    }
   };
 
   return (
@@ -63,6 +85,20 @@ export default function PrototypeCard({
               {description}
             </Typography>
           </Box>
+          {figmaEmbedCode && (
+            <Button
+              variant="outlined"
+              color="primary"
+              size="small"
+              sx={{ ml: 2, whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: 1 }}
+              href={getFigmaShareUrl(figmaEmbedCode)}
+              target="_blank"
+              rel="noopener noreferrer"
+              startIcon={<FigmaIcon />}
+            >
+              Figma Prototype
+            </Button>
+          )}
         </Box>
 
         {/* Content Section */}
@@ -75,8 +111,8 @@ export default function PrototypeCard({
             minHeight: 0,
           }}
         >
-          {/* Media */}
-          {(figmaEmbedCode || youtubeEmbedCode) && (
+          {/* Only show YouTube video */}
+          {youtubeEmbedCode && (
             <Box sx={{ width: "100%" }}>
               <Box
                 sx={{
@@ -85,40 +121,21 @@ export default function PrototypeCard({
                   height: 0,
                 }}
               >
-                {(!hasBothMedia || mediaTab === 0) && figmaEmbedCode && (
-                  <iframe
-                    src={figmaEmbedCode}
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      width: "100%",
-                      height: "100%",
-                      border: "none",
-                      borderRadius: 8,
-                      background: "#000",
-                    }}
-                    allowFullScreen
-                    title={title}
-                  />
-                )}
-                {hasBothMedia && mediaTab === 1 && youtubeEmbedCode && (
-                  <iframe
-                    src={youtubeEmbedCode}
-                    style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      width: "100%",
-                      height: "100%",
-                      border: "none",
-                      borderRadius: 8,
-                      background: "#000",
-                    }}
-                    allowFullScreen
-                    title={title}
-                  />
-                )}
+                <iframe
+                  src={youtubeEmbedCode}
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    left: 0,
+                    width: "100%",
+                    height: "100%",
+                    border: "none",
+                    borderRadius: 8,
+                    background: "#000",
+                  }}
+                  allowFullScreen
+                  title={title}
+                />
               </Box>
             </Box>
           )}
@@ -152,60 +169,6 @@ export default function PrototypeCard({
             <Typography variant="body2">{skillsApplied}</Typography>
           </Box>
         </Box>
-
-        {hasBothMedia && (
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "flex-end",
-              alignItems: "center",
-              mt: 1,
-              mb: 0.5,
-            }}
-          >
-            <ToggleButtonGroup
-              value={mediaTab}
-              exclusive
-              onChange={handleMediaTabChange}
-              size="small"
-              sx={{
-                background: "#24292f",
-                borderRadius: "999px",
-                overflow: "hidden",
-                minHeight: { xs: 28, md: 36 },
-                "& .MuiToggleButton-root": {
-                  px: { xs: 1, md: 2 },
-                  py: { xs: 0.1, md: 0.7 },
-                  fontSize: { xs: "0.72rem", md: "1rem" },
-                  minWidth: 0,
-                  border: "none",
-                  borderRadius: 0,
-                  color: "#fff",
-                  fontWeight: 600,
-                  "&:first-of-type": {
-                    borderTopLeftRadius: "999px",
-                    borderBottomLeftRadius: "999px",
-                  },
-                  "&:last-of-type": {
-                    borderTopRightRadius: "999px",
-                    borderBottomRightRadius: "999px",
-                  },
-                  "&.Mui-selected": {
-                    background:
-                      "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))",
-                    color: "#fff",
-                  },
-                  "&:not(:last-of-type)": {
-                    borderRight: "1px solid #444",
-                  },
-                },
-              }}
-            >
-              <ToggleButton value={0}>Figma</ToggleButton>
-              <ToggleButton value={1}>Video</ToggleButton>
-            </ToggleButtonGroup>
-          </Box>
-        )}
       </Paper>
     </Fade>
   );

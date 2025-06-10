@@ -72,7 +72,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           color: "rgba(60, 70, 110, 0.92)",
-          fontWeight: 500,
+          fontWeight: 600,
           background:
             "linear-gradient(var(--angle), rgb(94.1% 91.8% 93.3%), rgb(91% 87.1% 88.2%))",
           WebkitBackgroundClip: "text",

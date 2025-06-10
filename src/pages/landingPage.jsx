@@ -128,7 +128,7 @@ export default function LandingPage() {
                 <Box sx={portraitStyles}>
                   <img
                     alt="Portrait of Lennard Szyperski"
-                    src="/portrait.jpg"
+                    src="https://res.cloudinary.com/dcuh2fjgt/image/upload/v1749517584/portrait_cteosv.jpg"
                     style={{
                       width: "100%",
                       height: "100%",

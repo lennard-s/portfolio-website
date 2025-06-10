@@ -18,7 +18,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 
 const appBarGradient =
-  "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(36.5% 36.5% 43.5%))";
+  "linear-gradient(var(--angle), rgb(16.1% 20% 32.2%), rgb(26% 26% 33%))";
 const mainTextGradient =
   "linear-gradient(var(--angle), rgb(94.1% 91.8% 93.3%), rgb(91% 87.1% 88.2%))";
 // "linear-gradient(var(--angle), rgb(96.9% 71.8% 63.9%), rgb(92.2% 72.9% 72.5%), rgb(94.9% 84.7% 84.7%), rgb(94.1% 91.8% 83.9%))";
