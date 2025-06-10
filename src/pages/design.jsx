@@ -37,14 +37,14 @@ const prototypes = [
     description: "A complete overhaul of the RIT campus map experience.",
     figmaEmbedCode:
       "https://embed.figma.com/proto/UAOzmFJZhKM65EPHXo7UjW/Campus-Map-Redesign?page-id=0%3A1&node-id=1-2186&starting-point-node-id=1%3A2186&embed-host=share",
-    youtubeEmbedCode: "https://www.youtube.com/embed/your_video_id_here",
+    youtubeEmbedCode: "https://www.youtube.com/embed/vge7aZ1ec8M?si=oPqYkaoCbZ7Al_4N",
   },
   {
     title: "North Star Goal Tracker",
     description: "An AI powered goal setting and tracking app.",
     figmaEmbedCode:
       "https://embed.figma.com/proto/tseog53dc3Bu6f151el3EJ/North-Star-Prototype?page-id=0%3A1&node-id=1-809&starting-point-node-id=1%3A809&embed-host=share",
-    youtubeEmbedCode: "https://www.youtube.com/embed/your_video_id_here",
+    youtubeEmbedCode: "https://www.youtube.com/embed/Mty48cL7Wws?si=tgs6kWRN3OgMMXdQ",
   },
 ];
 
