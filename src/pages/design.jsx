@@ -37,14 +37,26 @@ const prototypes = [
     description: "A complete overhaul of the RIT campus map experience.",
     figmaEmbedCode:
       "https://embed.figma.com/proto/UAOzmFJZhKM65EPHXo7UjW/Campus-Map-Redesign?page-id=0%3A1&node-id=1-2186&starting-point-node-id=1%3A2186&embed-host=share",
-    youtubeEmbedCode: "https://www.youtube.com/embed/vge7aZ1ec8M?si=oPqYkaoCbZ7Al_4N",
+    youtubeEmbedCode:
+      "https://www.youtube.com/embed/vge7aZ1ec8M?si=oPqYkaoCbZ7Al_4N",
+    objectives:
+      "Redesign the campus map experience to be more user-friendly and visually appealing. Re-work the figma assets to be more modular and reusable to improve handoff efficiency between designers and developers.",
+    learningOutcomes:
+      "Improved Figma prototyping skills, user experience design, and visual design principles.",
+    skillsApplied: "Figma, User Experience, Visual Design, Prototyping",
   },
   {
     title: "North Star Goal Tracker",
     description: "An AI powered goal setting and tracking app.",
     figmaEmbedCode:
       "https://embed.figma.com/proto/tseog53dc3Bu6f151el3EJ/North-Star-Prototype?page-id=0%3A1&node-id=1-809&starting-point-node-id=1%3A809&embed-host=share",
-    youtubeEmbedCode: "https://www.youtube.com/embed/Mty48cL7Wws?si=tgs6kWRN3OgMMXdQ",
+    youtubeEmbedCode:
+      "https://www.youtube.com/embed/Mty48cL7Wws?si=tgs6kWRN3OgMMXdQ",
+    objectives:
+      "Create a user-friendly interface for setting and tracking personal goals, with AI assistance. Plan and execute a user flow that allows users to set, track, and achieve their goals. Conduct user testing to validate the design.",
+    learningOutcomes:
+      "Enhanced Figma prototyping skills, user experience design, and AI integration in user interfaces.",
+    skillsApplied: "Figma, User Experience, AI Integration, Prototyping",
   },
 ];
 
@@ -104,7 +116,7 @@ export default function DesignPage() {
   const [show, setShow] = React.useState(false);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md")); // true for < md
-  const isMdUp = useMediaQuery(theme.breakpoints.up("md"));     // true for >= md
+  const isMdUp = useMediaQuery(theme.breakpoints.up("md")); // true for >= md
 
   React.useEffect(() => {
     setShow(true);
