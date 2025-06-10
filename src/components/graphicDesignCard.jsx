@@ -40,6 +40,7 @@ export default function GraphicDesignCard({
       <Paper
         sx={{
           p: 2,
+          pb: 0,
           m: 1, // spacing between cards
           position: "relative",
           display: "flex",

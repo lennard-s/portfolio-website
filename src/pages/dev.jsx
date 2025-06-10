@@ -20,6 +20,9 @@ const projects = [
     learningOutcomes:
       "Technical Project Management, Full-stack development, REST APIs, authentication, data visualization, database design & construction.",
     techStack: ["React", "Node.js", "MySQL", "Express"],
+    writeup: `
+      Tackling the complexity of club management, our goal was to empower club leaders to efficiently track member engagement and participation at scale. This directly supports the business need for accurate reporting and streamlined operations, reducing manual overhead and errors. The design leverages modular UI components and robust backend logic to ensure data integrity and intuitive workflows, making it easy for users to manage large datasets without feeling overwhelmed. We asked questions about pain points in current processes to ensure our solution addressed real bottlenecks, not just surface-level issues.
+    `,
   },
   {
     title: "Mobile App",
@@ -31,6 +34,9 @@ const projects = [
       "Create a user-friendly mobile application that allows users to add and manage personal reviews for outdoor rock climbs.",
     learningOutcomes: "iOS development, mobile app design, user experience",
     techStack: ["Swift"],
+    writeup: `
+      The challenge was to help climbers document nuanced experiences and insights from each climb, supporting their growth and safety. This aligns with the broader business goal of increasing app engagement and retention by providing real value to users. The design focuses on quick entry, rich tagging, and easy retrieval of past climbs, ensuring users can capture and reflect on their progress. We asked users about their current journaling habits to uncover friction points and ensure the app truly fit into their routines.
+    `,
   },
   {
     title: "Rush Hour Game",
@@ -42,6 +48,9 @@ const projects = [
       "Create a playable version of the game 'Rush Hour' with a focus on object-oriented programming, CLI development, and algorithm implementation.",
     learningOutcomes:
       "Object-oriented programming, JavaFX, user interface design, team programming.",
+    writeup: `
+      The core complexity was translating a physical puzzle into an engaging digital experience that challenges users' problem-solving skills. This supports educational and entertainment business goals by fostering logical thinking and replayability. The design uses clear visual cues and responsive controls to mimic the tactile feedback of the original game, ensuring users remain immersed. We asked questions about user frustration and satisfaction to refine the interface and keep the challenge enjoyable rather than tedious.
+    `,
   },
 ];
 

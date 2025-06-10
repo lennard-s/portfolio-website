@@ -5,16 +5,21 @@ import {
   Paper,
   Divider,
   Fade,
-  Button,
+  IconButton,
+  Tooltip,
 } from "@mui/material";
-
 
 function FigmaIcon(props) {
   return (
     <img
       src="https://res.cloudinary.com/dcuh2fjgt/image/upload/v1749590600/figma_susjht.svg"
       alt="Figma"
-      style={{ width: 35, height: 35, display: "inline-block", verticalAlign: "middle" }}
+      style={{
+        width: 35,
+        height: 35,
+        display: "inline-block",
+        verticalAlign: "middle",
+      }}
       {...props}
     />
   );
@@ -86,18 +91,20 @@ export default function PrototypeCard({
             </Typography>
           </Box>
           {figmaEmbedCode && (
-            <Button
-              variant="outlined"
-              color="primary"
-              size="small"
-              sx={{ ml: 2, whiteSpace: "nowrap", display: "flex", alignItems: "center", gap: 1 }}
-              href={getFigmaShareUrl(figmaEmbedCode)}
-              target="_blank"
-              rel="noopener noreferrer"
-              startIcon={<FigmaIcon />}
-            >
-              Figma Prototype
-            </Button>
+            <Tooltip title="View Prototype" arrow>
+              <IconButton
+                href={getFigmaShareUrl(figmaEmbedCode)}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  ml: 1,
+                  p: 0.5,
+                }}
+                aria-label="Open Figma Prototype"
+              >
+                <FigmaIcon style={{ width: 50, height: 50 }} />
+              </IconButton>
+            </Tooltip>
           )}
         </Box>
 

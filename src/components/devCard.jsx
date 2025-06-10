@@ -17,6 +17,7 @@ export default function DevCard({
   objectives,
   learningOutcomes,
   techStack,
+  writeup,
 }) {
   const isMultiVideo = Array.isArray(videoUrl);
   const [currentVideo, setCurrentVideo] = useState(isMultiVideo ? 0 : null);
@@ -187,6 +188,13 @@ export default function DevCard({
             </Typography>
             <Typography variant="body2" sx={{ mb: 2 }}>
               {learningOutcomes}
+            </Typography>
+            <Divider />
+            <Typography variant="h6" sx={{ fontWeight: 700, mt: 2 }}>
+              Lenn's Writeup
+            </Typography>
+            <Typography variant="body2" sx={{ mb: 2 }}>
+              {writeup}
             </Typography>
             <Divider />
             {repoUrl && (

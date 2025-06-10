@@ -6,6 +6,7 @@ import {
   Fade,
   IconButton,
   Typography,
+  Slide, // <-- Add this import
 } from "@mui/material";
 import { Link } from "react-router-dom";
 import SchoolIcon from "@mui/icons-material/School";
@@ -52,19 +53,77 @@ export default function LandingPage() {
     <Box
       sx={{
         display: "flex",
+        flexDirection: "column", // Stack vertically
         alignItems: "center",
         justifyContent: "center",
-        p: { xs: 2, md: 4 },
+        p: { xs: 2, md: 2 },
       }}
     >
-      <Fade in={show} timeout={500}>
+      {/* Seeking Opportunities Section - slides in from the top */}
+      <Slide in={show} direction="down" timeout={700}>
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+            mb: 3,
+          }}
+        >
+          <Box
+            sx={{
+              background: "linear-gradient(90deg, #e0e7ff 60%, #f5f7fa 100%)",
+              borderRadius: 3,
+              boxShadow: "0 2px 12px 10px rgba(81,105,240,0.08)",
+              px: { xs: 2, md: 4 },
+              py: { xs: 1.5, md: 2 },
+              maxWidth: 650,
+              textAlign: "left",
+              width: "100%",
+            }}
+          >
+            <Typography
+              variant="h6"
+              sx={{
+                fontWeight: 700,
+                color: "#5169f0",
+                mb: 1,
+                letterSpacing: 0.2,
+                textAlign: "center",
+              }}
+            >
+              Seeking New Opportunities!
+            </Typography>
+            <Typography
+              variant="body1"
+              sx={{
+                color: "#222",
+                fontSize: "1.13rem",
+                lineHeight: 1.7,
+                fontWeight: 500,
+              }}
+            >
+              I am actively seeking employment and growth opportunities in
+              full-stack development, UX/UI design, and technical project
+              management.
+              <br />
+              If you’re looking for a passionate, creative, and driven team
+              member, let’s connect!
+            </Typography>
+          </Box>
+        </Box>
+      </Slide>
+      {/* Main Card - slides in from the bottom */}
+      <Slide in={show} direction="up" timeout={700}>
         <Card
           elevation={8}
           sx={{
             borderRadius: { xs: 0, md: 6 },
             minWidth: { xs: "90vw", md: 900 },
             maxWidth: 1100,
-            padding: { xs: 2, md: 4 },
+            pt: { xs: 2, md: 4 },
+            px: { xs: 2, md: 4 },
+            pb: 2,
+            mb: 4,
             background: "rgba(255,255,255,0.75)",
             boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.18)",
             backdropFilter: "blur(12px)",
@@ -108,7 +167,7 @@ export default function LandingPage() {
               display: "flex",
               flexDirection: { xs: "column", md: "row" },
               gap: { xs: 0, md: 8 },
-              mb: 4,
+              mb: 2,
             }}
           >
             {/* Portrait Section */}
@@ -118,7 +177,7 @@ export default function LandingPage() {
                   display: "flex",
                   justifyContent: "center",
                   alignItems: "center",
-                  marginBottom: 4,
+                  marginBottom: 2,
                   transition: "transform 0.4s cubic-bezier(.4,2,.6,1)",
                   "&:hover > div": {
                     transform: "scale(1.04)",
@@ -140,9 +199,10 @@ export default function LandingPage() {
                 </Box>
               </Box>
             </Fade>
+            {/* Welcome Message Section */}
             <Fade in={show} timeout={2500}>
               <Typography
-                variant="h6"
+                variant="body1" // was "h6"
                 sx={{
                   fontWeight: "bold",
                   textAlign: "left",
@@ -158,22 +218,22 @@ export default function LandingPage() {
                   px: { xs: 2, md: 3 },
                   py: { xs: 1.5, md: 2 },
                   letterSpacing: 0.1,
-                  lineHeight: 1.7,
+                  lineHeight: 1.5,
+                  fontSize: { xs: "1rem", md: "1.08rem" }, // slightly smaller
                 }}
               >
                 Welcome to my portfolio! I'm a full-stack web developer and
                 recent RIT summa cum laude graduate, passionate about creating
-                intuitive, user-centered solutions with React, Node.js,
-                JavaScript, Java, and Figma.
+                intuitive, user-centered solutions and innovative digital experiences. 
                 <br />
                 <span
                   style={{
                     display: "inline-block",
-                    marginTop: 12,
+                    mt: 12,
                     fontWeight: 600,
                     color: "#5169f0",
                     letterSpacing: 0.2,
-                    fontSize: "1.08em",
+                    fontSize: "0.98em", // slightly smaller
                   }}
                 >
                   Dive in to explore my projects and see how I blend creativity,
@@ -183,8 +243,7 @@ export default function LandingPage() {
               </Typography>
             </Fade>
           </Box>
-
-          {/* Introduction Section */}
+          {/* Attributes Section */}
           <CardContent
             sx={{
               width: "100%",
@@ -194,6 +253,8 @@ export default function LandingPage() {
               justifyContent: "space-between",
               alignItems: { xs: "center", md: "flex-start" },
               gap: 4,
+              // border: "1px solid rgba(0, 0, 0, 0.1)",
+              pb: 0,
             }}
           >
             {/* Column 1: Education */}
@@ -343,7 +404,7 @@ export default function LandingPage() {
             </Box>
           </CardContent>
         </Card>
-      </Fade>
+      </Slide>
     </Box>
   );
 }

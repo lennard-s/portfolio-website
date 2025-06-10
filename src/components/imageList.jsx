@@ -112,7 +112,7 @@ export default function PortfolioImageList() {
         sx={{
           width: "100%",
           maxWidth: 1200,
-          height: 1000,
+          height: "100vh",
           overflowY: "scroll",
         }}
       >
