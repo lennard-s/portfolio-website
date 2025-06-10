@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Typography, Box, Divider, Paper, Fade } from "@mui/material";
 
 const Resume = () => {
