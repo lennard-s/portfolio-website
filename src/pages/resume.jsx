@@ -59,16 +59,10 @@ const Resume = () => {
             Summary
           </Typography>
           <Typography variant="body1" sx={{ color: "#444", lineHeight: 1.6 }}>
-            I'm a full-stack web developer and recent summa cum laude graduate
-            from RIT with a BS in Human Centered Computing. With a passion for
-            user-centered design, I craft intuitive, impactful solutions using
-            React, Node.js, JavaScript, and Java, while also excelling in UX
-            prototyping with Figma. My experience ranges from leading capstone
-            web development projects to managing teams as an Assistant
-            Superintendent, blending technical expertise with strong leadership.
-            Explore my work to see how I bring creativity and collaboration to
-            software engineering, UX/UI design, and technical project
-            management!
+            Human-Centered Computing graduate with a broad foundation in UX design, product thinking, and full-stack development. 
+            I specialize in understanding problem spaces, shaping intuitive user experiences, and coordinating cross-functional work. 
+            With experience leading a winning capstone team and managing crews as an Assistant Superintendent, 
+            I bring structured decision-making, clear communication, and collaborative leadership to product and UX roles.
           </Typography>
         </Box>
 
